@@ -6,9 +6,9 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Tehillah Photography | Luxury Event & Portrait Photographer London",
+  title: "Tehillah Photography | Luxury Event & Portrait Photographer",
   description:
-    "London-based luxury photographer specialising in proposals, graduations, birthdays, and studio portrait sessions. Book your session today.",
+    "Birmingham-based luxury photographer specialising in proposals, graduations, birthdays, and studio portrait sessions. Book your session today.",
 };
 
 const categories = [
@@ -60,7 +60,7 @@ export default function HomePage() {
         <section className="py-16 md:py-20 border-b border-[#E2D9C8]">
           <div className="max-w-2xl mx-auto px-6 text-center">
             <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-6">
-              London — Est. 2018
+              Birmingham — Est. 2023
             </p>
             <h2 className="font-[var(--font-tenor)] text-3xl md:text-4xl font-light text-[#1C2A5A] leading-relaxed">
               Life is made of fleeting, extraordinary moments.
