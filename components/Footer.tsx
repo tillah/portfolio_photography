@@ -8,9 +8,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://instagram.com", label: "Instagram" },
+  { href: "https://instagram.com/tillah.jpg", label: "Instagram" },
   { href: "https://tiktok.com", label: "TikTok" },
-  { href: "mailto:hello@elaravoss.com", label: "Email" },
+  { href: "mailto:tehillahmuchato@gmail.com", label: "Email" },
 ];
 
 export default function Footer() {
@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <p className="font-[var(--font-tenor)] text-2xl font-light tracking-[0.15em] uppercase mb-4">
-              Elara Voss
+              Tehillah
             </p>
             <p className="font-[var(--font-roboto)] text-xs text-[#A85232] leading-relaxed tracking-wide">
               Luxury event & portrait photographer
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-[var(--font-roboto)] text-[10px] text-white/40 tracking-widest uppercase">
-            © {new Date().getFullYear()} Elara Voss Photography. All rights reserved.
+            © {new Date().getFullYear()} Tehillah Photography. All rights reserved.
           </p>
           <p className="font-[var(--font-roboto)] text-[10px] text-white/40 tracking-widest uppercase">
             London, United Kingdom

@@ -5,7 +5,7 @@ import PortfolioGallery from "@/components/PortfolioGallery";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Browse the photography portfolio of Elara Voss — proposals, graduations, birthday celebrations, and studio portrait sessions across London.",
+    "Browse the photography portfolio of Tehillah — proposals, graduations, birthday celebrations, and studio portrait sessions across London.",
 };
 
 export default function PortfolioPage() {

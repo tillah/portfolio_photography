@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Elara Voss to book a photography session or discuss your upcoming event. Based in London.",
+    "Get in touch with Tehillah to book a photography session or discuss your upcoming event. Based in London.",
 };
 
 export default function ContactPage() {
@@ -45,10 +45,10 @@ export default function ContactPage() {
                     Email
                   </p>
                   <a
-                    href="mailto:hello@elaravoss.com"
+                    href="mailto:tehillahmuchato@gmail.com"
                     className="font-[var(--font-tenor)] text-2xl font-light text-[#1C2A5A] hover:text-[#A85232] transition-colors"
                   >
-                    hello@elaravoss.com
+                    tehillahmuchato@gmail.com
                   </a>
                 </div>
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex gap-6">
                     <a
-                      href="https://instagram.com"
+                      href="https://instagram.com/tillah.jpg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-[var(--font-roboto)] text-sm text-[#1C2A5A] hover:text-[#A85232] transition-colors tracking-wide border-b border-[#E2D9C8] pb-px"

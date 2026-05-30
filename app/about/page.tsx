@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Elara Voss — luxury event and portrait photographer based in London. Learn about her approach to storytelling through photography.",
+    "Meet Tehillah — luxury event and portrait photographer based in London. Learn about her approach to storytelling through photography.",
 };
 
 export default function AboutPage() {
@@ -16,7 +16,7 @@ export default function AboutPage() {
       <section className="relative h-[55vh] min-h-[400px] overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1920&q=80"
-          alt="Elara Voss — London photographer"
+          alt="Tehillah — London photographer"
           fill
           priority
           className="object-cover object-top"
@@ -29,7 +29,7 @@ export default function AboutPage() {
               The Photographer
             </p>
             <h1 className="font-[var(--font-tenor)] text-5xl md:text-6xl font-light text-white">
-              About Elara
+              About Tehillah
             </h1>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <div className="relative aspect-[3/4] max-w-md">
               <Image
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=85"
-                alt="Portrait of Elara Voss, photographer"
+                alt="Portrait of Tehillah, photographer"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -66,7 +66,7 @@ export default function AboutPage() {
 
               <div className="space-y-5 font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide">
                 <p>
-                  My name is Elara Voss, and I&apos;ve spent the last eight
+                  My name is Tehillah, and I&apos;ve spent the last eight
                   years photographing the moments that shape people&apos;s
                   lives. I&apos;m a London-based photographer with a deep
                   passion for human connection, emotion, and the quiet power of

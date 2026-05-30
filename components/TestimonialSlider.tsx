@@ -6,25 +6,25 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     quote:
-      "Elara captured our proposal in a way that still leaves me speechless. Every single image tells the story of one of the most important moments of my life. Truly an exceptional photographer.",
+      "Tehillah captured our proposal in a way that still leaves me speechless. Every single image tells the story of one of the most important moments of my life. Truly an exceptional photographer.",
     name: "Sophie & James",
     event: "Proposal, Kensington Gardens",
   },
   {
     quote:
-      "I had my graduation portraits done with Elara after seeing her work online. The photos are absolutely stunning — she made me feel completely at ease and the results exceeded every expectation.",
+      "I had my graduation portraits done with Tehillah after seeing her work online. The photos are absolutely stunning — she made me feel completely at ease and the results exceeded every expectation.",
     name: "Amara K.",
     event: "Graduation, UCL",
   },
   {
     quote:
-      "We hired Elara for my mother's 60th birthday celebration. She has a genuine gift for capturing authentic emotion. Our whole family was blown away when we saw the final gallery.",
+      "We hired Tehillah for my mother's 60th birthday celebration. She has a genuine gift for capturing authentic emotion. Our whole family was blown away when we saw the final gallery.",
     name: "The Okonkwo Family",
     event: "Birthday Celebration, London",
   },
   {
     quote:
-      "The studio session was unlike anything I'd experienced before. Elara creates an atmosphere where you feel relaxed and truly seen. My portraits are pieces of art I'll treasure forever.",
+      "The studio session was unlike anything I'd experienced before. Tehillah creates an atmosphere where you feel relaxed and truly seen. My portraits are pieces of art I'll treasure forever.",
     name: "Charlotte M.",
     event: "Studio Portrait Session",
   },

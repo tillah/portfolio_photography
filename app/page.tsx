@@ -6,7 +6,7 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Elara Voss Photography | Luxury Event & Portrait Photographer London",
+  title: "Tehillah Photography | Luxury Event & Portrait Photographer London",
   description:
     "London-based luxury photographer specialising in proposals, graduations, birthdays, and studio portrait sessions. Book your session today.",
 };
@@ -117,7 +117,7 @@ export default function HomePage() {
               the one moment that never moves.&rdquo;
             </p>
             <p className="font-[var(--font-roboto)] text-xs tracking-[0.2em] uppercase text-white/50 mt-8">
-              Elara Voss
+              Tehillah
             </p>
           </div>
         </section>

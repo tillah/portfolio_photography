@@ -19,8 +19,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Elara Voss Photography | Luxury Event & Portrait Photographer",
-    template: "%s | Elara Voss Photography",
+    default: "Tehillah Photography | Luxury Event & Portrait Photographer",
+    template: "%s | Tehillah Photography",
   },
   description:
     "Luxury event and portrait photographer based in London, specialising in proposals, graduations, birthdays, and studio sessions. Capturing the moments that define your story.",
@@ -32,20 +32,20 @@ export const metadata: Metadata = {
     "studio portrait photographer",
     "event photography UK",
   ],
-  authors: [{ name: "Elara Voss" }],
+  authors: [{ name: "Tehillah" }],
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://elaravoss.com",
-    siteName: "Elara Voss Photography",
-    title: "Elara Voss Photography | Luxury Event & Portrait Photographer",
+    url: "https://tehillahmuchato.com",
+    siteName: "Tehillah Photography",
+    title: "Tehillah Photography | Luxury Event & Portrait Photographer",
     description:
       "Capturing the moments that define your story — proposals, graduations, birthdays, and portraits.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Elara Voss Photography" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Tehillah Photography" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elara Voss Photography",
+    title: "Tehillah Photography",
     description: "Capturing the moments that define your story.",
     images: ["/og-image.jpg"],
   },

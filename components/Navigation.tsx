@@ -51,7 +51,7 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className={`font-[var(--font-tenor)] text-xl md:text-2xl font-light tracking-[0.15em] uppercase transition-colors duration-300 ${textColor}`}>
-          Elara Voss
+          Tehillah
         </Link>
 
         {/* Desktop links */}

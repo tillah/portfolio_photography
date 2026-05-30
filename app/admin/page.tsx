@@ -48,7 +48,7 @@ function LoginScreen({ onLogin }: { onLogin: (pw: string) => void }) {
       >
         <p className="font-[var(--font-tenor)] text-2xl text-white mb-1 tracking-wide">Admin Portal</p>
         <p className="font-[var(--font-roboto)] text-xs text-white/40 tracking-widest uppercase mb-8">
-          Elara Voss Photography
+          Tehillah Photography
         </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -450,7 +450,7 @@ export default function AdminPage() {
       <header className="border-b border-white/10 px-6 py-4 flex items-center justify-between sticky top-0 bg-[#0f1117]/95 backdrop-blur z-40">
         <div className="flex items-center gap-4">
           <p className="font-[var(--font-tenor)] text-lg tracking-wide">Admin Portal</p>
-          <span className="text-white/20 text-xs hidden sm:block">Elara Voss Photography</span>
+          <span className="text-white/20 text-xs hidden sm:block">Tehillah Photography</span>
         </div>
         <div className="flex items-center gap-4">
           <a
