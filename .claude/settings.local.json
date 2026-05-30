@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /opt/homebrew/bin/node /usr/local/bin/node ~/.nvm/versions/node/*/bin/node 2>/dev/null | head -5)",
+      "Bash(brew list *)",
+      "Read(//Applications/**)"
+    ]
+  }
+}
