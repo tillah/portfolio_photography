@@ -6,7 +6,7 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Tehillah Photography | Luxury Event & Portrait Photographer",
+  title: "Tehillah Photography | Luxury Event & Portrait Photographer based in Birmingham and Beyond",
   description:
     "Birmingham-based luxury photographer specialising in proposals, graduations, birthdays, and studio portrait sessions. Book your session today.",
 };

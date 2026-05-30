@@ -73,7 +73,7 @@ export default function HeroSlideshow() {
         </h1>
 
         <p className="font-[var(--font-roboto)] text-sm md:text-base text-white/75 tracking-wide max-w-md mb-12">
-          Luxury event & portrait photography across London and beyond
+          Luxury event & portrait photography across Birmingham and beyond
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">

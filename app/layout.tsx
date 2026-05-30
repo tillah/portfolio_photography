@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     template: "%s | Tehillah Photography",
   },
   description:
-    "Luxury event and portrait photographer based in London, specialising in proposals, graduations, birthdays, and studio sessions. Capturing the moments that define your story.",
+    "Luxury event and portrait photographer based in Birmingham, specialising in proposals, graduations, birthdays, and studio sessions. Capturing the moments that define your story.",
   keywords: [
-    "luxury photographer London",
+    "luxury photographer Birmingham",
     "proposal photographer",
     "graduation photographer",
     "birthday photographer",

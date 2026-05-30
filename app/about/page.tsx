@@ -16,7 +16,7 @@ export default function AboutPage() {
       <section className="relative h-[55vh] min-h-[400px] overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1920&q=80"
-          alt="Tehillah — London photographer"
+          alt="Tehillah — Birmingham photographer"
           fill
           priority
           className="object-cover object-top"
@@ -66,9 +66,10 @@ export default function AboutPage() {
 
               <div className="space-y-5 font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide">
                 <p>
-                  Hey, my name is Tehillah. My journey started at eight years
-                  old with a JVC camcorder in my hands — a spark that would
-                  follow me through every chapter. Through my teens, through
+                  Hey, my name is Tehillah. I&apos;m a Birmingham-based
+                  photographer and my journey started at eight years old with a
+                  JVC camcorder in my hands — a spark that would follow me
+                  through every chapter. Through my teens, through
                   university, that flame never quite went out. But it wasn&apos;t
                   until 2023, serving on my church&apos;s media team, that
                   everything clicked. I stopped just recording and started

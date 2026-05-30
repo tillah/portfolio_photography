@@ -26,7 +26,7 @@ export default function Footer() {
             <p className="font-[var(--font-roboto)] text-xs text-[#A85232] leading-relaxed tracking-wide">
               Luxury event & portrait photographer
               <br />
-              based in London, UK
+              based in Birmingham, UK
             </p>
           </div>
 
@@ -84,7 +84,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Tehillah Photography. All rights reserved.
           </p>
           <p className="font-[var(--font-roboto)] text-[10px] text-white/40 tracking-widest uppercase">
-            London, United Kingdom
+            Birmingham, United Kingdom
           </p>
         </div>
       </div>

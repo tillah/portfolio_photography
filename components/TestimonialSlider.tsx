@@ -20,7 +20,7 @@ const testimonials = [
     quote:
       "We hired Tehillah for my mother's 60th birthday celebration. She has a genuine gift for capturing authentic emotion. Our whole family was blown away when we saw the final gallery.",
     name: "The Okonkwo Family",
-    event: "Birthday Celebration, London",
+    event: "Birthday Celebration, Birmingham",
   },
   {
     quote:

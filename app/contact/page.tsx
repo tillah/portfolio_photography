@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Tehillah to book a photography session or discuss your upcoming event. Based in London.",
+    "Get in touch with Tehillah to book a photography session or discuss your upcoming event. Based in Birmingham.",
 };
 
 export default function ContactPage() {
@@ -57,7 +57,7 @@ export default function ContactPage() {
                     Location
                   </p>
                   <p className="font-[var(--font-tenor)] text-2xl font-light text-[#1C2A5A]">
-                    London, United Kingdom
+                    Birmingham, United Kingdom
                   </p>
                   <p className="font-[var(--font-roboto)] text-xs text-[#A85232] mt-1 tracking-wide">
                     Available to travel for destination shoots
