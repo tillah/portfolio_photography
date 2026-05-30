@@ -1,0 +1,131 @@
+"use client";
+
+import { useState, useCallback, useEffect } from "react";
+import Image from "next/image";
+import { useSearchParams, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { photos, Category, Photo } from "@/lib/photos";
+import Lightbox from "@/components/Lightbox";
+
+const filters: { label: string; value: "all" | Category }[] = [
+  { label: "All Work", value: "all" },
+  { label: "Proposals", value: "proposals" },
+  { label: "Graduations", value: "graduations" },
+  { label: "Birthdays", value: "birthdays" },
+  { label: "Studio", value: "studio" },
+];
+
+export default function PortfolioGallery() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const paramCategory = searchParams.get("category") as Category | null;
+
+  const [active, setActive] = useState<"all" | Category>(
+    paramCategory && filters.some((f) => f.value === paramCategory)
+      ? paramCategory
+      : "all"
+  );
+  const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
+
+  const filtered = active === "all" ? photos : photos.filter((p) => p.category === active);
+
+  const currentIndex = lightboxPhoto
+    ? filtered.findIndex((p) => p.id === lightboxPhoto.id)
+    : -1;
+
+  const openLightbox = (photo: Photo) => setLightboxPhoto(photo);
+  const closeLightbox = () => setLightboxPhoto(null);
+
+  const prevPhoto = useCallback(() => {
+    if (currentIndex > 0) setLightboxPhoto(filtered[currentIndex - 1]);
+    else setLightboxPhoto(filtered[filtered.length - 1]);
+  }, [currentIndex, filtered]);
+
+  const nextPhoto = useCallback(() => {
+    if (currentIndex < filtered.length - 1) setLightboxPhoto(filtered[currentIndex + 1]);
+    else setLightboxPhoto(filtered[0]);
+  }, [currentIndex, filtered]);
+
+  const handleFilter = (value: "all" | Category) => {
+    setActive(value);
+    setLightboxPhoto(null);
+    const params = new URLSearchParams(searchParams.toString());
+    if (value === "all") params.delete("category");
+    else params.set("category", value);
+    router.replace(`/portfolio?${params.toString()}`, { scroll: false });
+  };
+
+  return (
+    <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
+      {/* Filters */}
+      <div className="flex flex-wrap gap-3 md:gap-6 mb-10 pb-6 border-b border-[#e8e0d6]">
+        {filters.map(({ label, value }) => (
+          <button
+            key={value}
+            onClick={() => handleFilter(value)}
+            className={`font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase pb-1 transition-all duration-300 ${
+              active === value
+                ? "text-[#1a1a1a] border-b border-[#1a1a1a]"
+                : "text-[#9c9289] hover:text-[#1a1a1a]"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Count */}
+      <p className="font-[var(--font-jost)] text-[10px] tracking-widest uppercase text-[#c8bdb4] mb-8">
+        {filtered.length} {filtered.length === 1 ? "image" : "images"}
+      </p>
+
+      {/* Masonry grid */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6"
+        >
+          {filtered.map((photo, i) => (
+            <motion.div
+              key={photo.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="mb-4 md:mb-6 break-inside-avoid group cursor-pointer"
+              onClick={() => openLightbox(photo)}
+            >
+              <div className="relative overflow-hidden">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading={i < 6 ? "eager" : "lazy"}
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    View
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+
+      <Lightbox
+        photo={lightboxPhoto}
+        photos={filtered}
+        onClose={closeLightbox}
+        onPrev={prevPhoto}
+        onNext={nextPhoto}
+      />
+    </section>
+  );
+}

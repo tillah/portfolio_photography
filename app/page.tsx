@@ -1,65 +1,131 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import HeroSlideshow from "@/components/HeroSlideshow";
+import CategoryCard from "@/components/CategoryCard";
+import CTASection from "@/components/CTASection";
+import TestimonialSlider from "@/components/TestimonialSlider";
+import FadeIn from "@/components/FadeIn";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Elara Voss Photography | Luxury Event & Portrait Photographer London",
+  description:
+    "London-based luxury photographer specialising in proposals, graduations, birthdays, and studio portrait sessions. Book your session today.",
+};
+
+const categories = [
+  {
+    title: "Proposals",
+    description:
+      "The moment you say yes deserves to be remembered forever. Discreet, heartfelt, and beautifully captured.",
+    imageSrc:
+      "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&q=80",
+    imageAlt: "Romantic proposal at golden hour",
+    href: "/portfolio?category=proposals",
+  },
+  {
+    title: "Graduations",
+    description:
+      "Years of dedication, one extraordinary day. Celebrate the achievement with images that honour the journey.",
+    imageSrc:
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+    imageAlt: "Graduation celebration",
+    href: "/portfolio?category=graduations",
+  },
+  {
+    title: "Birthdays",
+    description:
+      "From intimate gatherings to landmark celebrations — your story, beautifully told.",
+    imageSrc:
+      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80",
+    imageAlt: "Elegant birthday celebration",
+    href: "/portfolio?category=birthdays",
+  },
+  {
+    title: "Studio",
+    description:
+      "Timeless portraits in a controlled, creative environment. Just you, the light, and the lens.",
+    imageSrc:
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80",
+    imageAlt: "Studio portrait session",
+    href: "/portfolio?category=studio",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <>
+      <HeroSlideshow />
+
+      {/* Intro strip */}
+      <FadeIn>
+        <section className="py-16 md:py-20 border-b border-[#e8e0d6]">
+          <div className="max-w-2xl mx-auto px-6 text-center">
+            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-6">
+              London — Est. 2018
+            </p>
+            <h2 className="font-[var(--font-cormorant)] text-3xl md:text-4xl font-light text-[#1a1a1a] leading-relaxed">
+              Life is made of fleeting, extraordinary moments.
+              <br />
+              <span className="italic">My work is to preserve them.</span>
+            </h2>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Categories */}
+      <section className="py-16 md:py-24 max-w-7xl mx-auto px-6 md:px-10">
+        <FadeIn>
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-3">
+                Specialities
+              </p>
+              <h2 className="font-[var(--font-cormorant)] text-4xl md:text-5xl font-light text-[#1a1a1a]">
+                Every occasion, honoured
+              </h2>
+            </div>
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="/portfolio"
+              className="hidden md:block font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#6b6460] hover:text-[#1a1a1a] transition-colors border-b border-[#c8bdb4] pb-px"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              View all work
+            </a>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {categories.map((cat, i) => (
+            <CategoryCard key={cat.title} {...cat} index={i} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Full-bleed quote section */}
+      <FadeIn>
+        <section className="relative py-28 md:py-40 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1920&q=80')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="relative max-w-3xl mx-auto px-6 text-center text-white">
+            <p className="font-[var(--font-cormorant)] text-3xl md:text-5xl font-light leading-relaxed italic">
+              &ldquo;A photograph is the pause button of life —
+              <br />
+              the one moment that never moves.&rdquo;
+            </p>
+            <p className="font-[var(--font-jost)] text-xs tracking-[0.2em] uppercase text-white/50 mt-8">
+              Elara Voss
+            </p>
+          </div>
+        </section>
+      </FadeIn>
+
+      <TestimonialSlider />
+
+      <CTASection dark />
+    </>
   );
 }
