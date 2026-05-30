@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Photography services by Elara Voss — proposal photography, graduation sessions, birthday events, and studio portraits. View packages and pricing.",
+    "Photography services by Tehillah — proposal photography, graduation sessions, birthday events, and studio portraits. View packages and pricing.",
 };
 
 const services = [

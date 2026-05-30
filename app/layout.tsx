@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Tenor_Sans, Roboto } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import ConditionalShell from "@/components/ConditionalShell";
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -42,14 +41,7 @@ export const metadata: Metadata = {
     title: "Elara Voss Photography | Luxury Event & Portrait Photographer",
     description:
       "Capturing the moments that define your story — proposals, graduations, birthdays, and portraits.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Elara Voss Photography",
-      },
-    ],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Elara Voss Photography" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -57,23 +49,14 @@ export const metadata: Metadata = {
     description: "Capturing the moments that define your story.",
     images: ["/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${tenorSans.variable} ${roboto.variable}`}>
-      <body className="bg-[#F5F1E8] text-[#1C2A5A]">
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+      <body>
+        <ConditionalShell>{children}</ConditionalShell>
       </body>
     </html>
   );

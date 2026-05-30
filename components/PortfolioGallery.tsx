@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { photos, Category, Photo } from "@/lib/photos";
+import { Category, Photo } from "@/lib/photos";
 import Lightbox from "@/components/Lightbox";
 
 const filters: { label: string; value: "all" | Category }[] = [
@@ -25,7 +25,15 @@ export default function PortfolioGallery() {
       ? paramCategory
       : "all"
   );
+  const [photos, setPhotos] = useState<Photo[]>([]);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((r) => r.json())
+      .then(setPhotos)
+      .catch(() => setPhotos([]));
+  }, []);
 
   const filtered = active === "all" ? photos : photos.filter((p) => p.category === active);
 
@@ -107,6 +115,7 @@ export default function PortfolioGallery() {
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading={i < 6 ? "eager" : "lazy"}
+                  unoptimized={photo.src.startsWith("/uploads/")}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
                   <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
