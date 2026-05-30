@@ -25,10 +25,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-end pb-16 px-6 md:px-10 max-w-7xl mx-auto">
           <div>
-            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-white/60 mb-3">
+            <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-white/60 mb-3">
               The Photographer
             </p>
-            <h1 className="font-[var(--font-cormorant)] text-5xl md:text-6xl font-light text-white">
+            <h1 className="font-[var(--font-tenor)] text-5xl md:text-6xl font-light text-white">
               About Elara
             </h1>
           </div>
@@ -54,17 +54,17 @@ export default function AboutPage() {
           {/* Copy */}
           <FadeIn delay={0.15}>
             <div className="pt-4">
-              <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-8">
+              <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-8">
                 My Story
               </p>
 
-              <h2 className="font-[var(--font-cormorant)] text-4xl md:text-5xl font-light text-[#1a1a1a] leading-tight mb-8">
+              <h2 className="font-[var(--font-tenor)] text-4xl md:text-5xl font-light text-[#1C2A5A] leading-tight mb-8">
                 I believe every milestone
                 <br />
                 <em className="italic">deserves to endure.</em>
               </h2>
 
-              <div className="space-y-5 font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide">
+              <div className="space-y-5 font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide">
                 <p>
                   My name is Elara Voss, and I&apos;ve spent the last eight
                   years photographing the moments that shape people&apos;s
@@ -96,10 +96,10 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="mt-10 pt-10 border-t border-[#e8e0d6]">
+              <div className="mt-10 pt-10 border-t border-[#E2D9C8]">
                 <a
                   href="/contact"
-                  className="inline-block font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase bg-[#1a1a1a] text-white px-10 py-4 hover:bg-[#333] transition-colors duration-300"
+                  className="inline-block font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-[#1C2A5A] text-white px-10 py-4 hover:bg-[#2A3D7A] transition-colors duration-300"
                 >
                   Work with me
                 </a>
@@ -111,9 +111,9 @@ export default function AboutPage() {
 
       {/* Values */}
       <FadeIn>
-        <section className="bg-[#f5f0e8] py-20 md:py-28">
+        <section className="bg-[#F5F1E8] py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
-            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-12 text-center">
+            <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-12 text-center">
               How I work
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -132,10 +132,10 @@ export default function AboutPage() {
                 },
               ].map(({ title, body }) => (
                 <div key={title} className="text-center">
-                  <h3 className="font-[var(--font-cormorant)] text-3xl font-light text-[#1a1a1a] mb-4">
+                  <h3 className="font-[var(--font-tenor)] text-3xl font-light text-[#1C2A5A] mb-4">
                     {title}
                   </h3>
-                  <p className="font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide">
+                  <p className="font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide">
                     {body}
                   </p>
                 </div>

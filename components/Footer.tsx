@@ -15,15 +15,15 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-white">
+    <footer className="bg-[#1C2A5A] text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-12">
           {/* Brand */}
           <div>
-            <p className="font-[var(--font-cormorant)] text-2xl font-light tracking-[0.15em] uppercase mb-4">
+            <p className="font-[var(--font-tenor)] text-2xl font-light tracking-[0.15em] uppercase mb-4">
               Elara Voss
             </p>
-            <p className="font-[var(--font-jost)] text-xs text-[#9c9289] leading-relaxed tracking-wide">
+            <p className="font-[var(--font-roboto)] text-xs text-[#A85232] leading-relaxed tracking-wide">
               Luxury event & portrait photographer
               <br />
               based in London, UK
@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.22em] uppercase text-[#9c9289] mb-5">
+            <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.22em] uppercase text-[#A85232] mb-5">
               Navigation
             </p>
             <ul className="space-y-3">
@@ -40,7 +40,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="font-[var(--font-jost)] text-sm text-white/80 hover:text-white transition-colors tracking-wide"
+                    className="font-[var(--font-roboto)] text-sm text-white/80 hover:text-white transition-colors tracking-wide"
                   >
                     {label}
                   </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div>
-            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.22em] uppercase text-[#9c9289] mb-5">
+            <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.22em] uppercase text-[#A85232] mb-5">
               Connect
             </p>
             <ul className="space-y-3">
@@ -61,7 +61,7 @@ export default function Footer() {
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="font-[var(--font-jost)] text-sm text-white/80 hover:text-white transition-colors tracking-wide"
+                    className="font-[var(--font-roboto)] text-sm text-white/80 hover:text-white transition-colors tracking-wide"
                   >
                     {label}
                   </a>
@@ -71,7 +71,7 @@ export default function Footer() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-block font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase border border-white/40 px-6 py-3 hover:bg-white hover:text-[#1a1a1a] transition-all duration-300"
+                className="inline-block font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase border border-white/40 px-6 py-3 hover:bg-white hover:text-[#1C2A5A] transition-all duration-300"
               >
                 Book a Session
               </Link>
@@ -80,10 +80,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-[var(--font-jost)] text-[10px] text-white/40 tracking-widest uppercase">
+          <p className="font-[var(--font-roboto)] text-[10px] text-white/40 tracking-widest uppercase">
             © {new Date().getFullYear()} Elara Voss Photography. All rights reserved.
           </p>
-          <p className="font-[var(--font-jost)] text-[10px] text-white/40 tracking-widest uppercase">
+          <p className="font-[var(--font-roboto)] text-[10px] text-white/40 tracking-widest uppercase">
             London, United Kingdom
           </p>
         </div>

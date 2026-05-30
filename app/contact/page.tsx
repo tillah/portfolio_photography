@@ -13,12 +13,12 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-[#f5f0e8]">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-[#F5F1E8]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-4">
+          <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-4">
             Get in touch
           </p>
-          <h1 className="font-[var(--font-cormorant)] text-5xl md:text-6xl lg:text-7xl font-light text-[#1a1a1a] leading-tight max-w-xl">
+          <h1 className="font-[var(--font-tenor)] text-5xl md:text-6xl lg:text-7xl font-light text-[#1C2A5A] leading-tight max-w-xl">
             Let&apos;s begin
             <br />
             <em className="italic">your story.</em>
@@ -32,7 +32,7 @@ export default function ContactPage() {
           {/* Info */}
           <FadeIn>
             <div>
-              <p className="font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide max-w-sm mb-12">
+              <p className="font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide max-w-sm mb-12">
                 Whether you&apos;re planning a proposal, counting down to
                 graduation, or dreaming of a studio session — I&apos;d love to
                 hear about your vision. Fill in the form and I&apos;ll be in
@@ -41,31 +41,31 @@ export default function ContactPage() {
 
               <div className="space-y-8">
                 <div>
-                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#9c9289] mb-2">
+                  <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-2">
                     Email
                   </p>
                   <a
                     href="mailto:hello@elaravoss.com"
-                    className="font-[var(--font-cormorant)] text-2xl font-light text-[#1a1a1a] hover:text-[#9c9289] transition-colors"
+                    className="font-[var(--font-tenor)] text-2xl font-light text-[#1C2A5A] hover:text-[#A85232] transition-colors"
                   >
                     hello@elaravoss.com
                   </a>
                 </div>
 
                 <div>
-                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#9c9289] mb-2">
+                  <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-2">
                     Location
                   </p>
-                  <p className="font-[var(--font-cormorant)] text-2xl font-light text-[#1a1a1a]">
+                  <p className="font-[var(--font-tenor)] text-2xl font-light text-[#1C2A5A]">
                     London, United Kingdom
                   </p>
-                  <p className="font-[var(--font-jost)] text-xs text-[#9c9289] mt-1 tracking-wide">
+                  <p className="font-[var(--font-roboto)] text-xs text-[#A85232] mt-1 tracking-wide">
                     Available to travel for destination shoots
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#9c9289] mb-4">
+                  <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-4">
                     Follow my work
                   </p>
                   <div className="flex gap-6">
@@ -73,7 +73,7 @@ export default function ContactPage() {
                       href="https://instagram.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-[var(--font-jost)] text-sm text-[#1a1a1a] hover:text-[#9c9289] transition-colors tracking-wide border-b border-[#e8e0d6] pb-px"
+                      className="font-[var(--font-roboto)] text-sm text-[#1C2A5A] hover:text-[#A85232] transition-colors tracking-wide border-b border-[#E2D9C8] pb-px"
                     >
                       Instagram
                     </a>
@@ -81,7 +81,7 @@ export default function ContactPage() {
                       href="https://tiktok.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-[var(--font-jost)] text-sm text-[#1a1a1a] hover:text-[#9c9289] transition-colors tracking-wide border-b border-[#e8e0d6] pb-px"
+                      className="font-[var(--font-roboto)] text-sm text-[#1C2A5A] hover:text-[#A85232] transition-colors tracking-wide border-b border-[#E2D9C8] pb-px"
                     >
                       TikTok
                     </a>

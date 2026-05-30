@@ -50,9 +50,9 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full bg-transparent border-b border-[#c8bdb4] py-3 font-[var(--font-jost)] text-sm text-[#1a1a1a] placeholder-[#c8bdb4] focus:outline-none focus:border-[#1a1a1a] transition-colors tracking-wide";
+    "w-full bg-transparent border-b border-[#B8A898] py-3 font-[var(--font-roboto)] text-sm text-[#1C2A5A] placeholder-[#B8A898] focus:outline-none focus:border-[#1C2A5A] transition-colors tracking-wide";
   const labelClass =
-    "block font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#9c9289] mb-2";
+    "block font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-2";
 
   if (submitted) {
     return (
@@ -61,11 +61,11 @@ export default function ContactForm() {
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-col items-start justify-center h-full py-12"
       >
-        <div className="w-12 h-px bg-[#1a1a1a] mb-8" />
-        <h2 className="font-[var(--font-cormorant)] text-4xl font-light text-[#1a1a1a] mb-4">
+        <div className="w-12 h-px bg-[#1C2A5A] mb-8" />
+        <h2 className="font-[var(--font-tenor)] text-4xl font-light text-[#1C2A5A] mb-4">
           Thank you, {form.name.split(" ")[0]}.
         </h2>
-        <p className="font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide max-w-sm">
+        <p className="font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide max-w-sm">
           Your message has been received. I&apos;ll be in touch within 48 hours
           to discuss your session. I&apos;m looking forward to hearing more
           about your story.
@@ -165,7 +165,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase bg-[#1a1a1a] text-white px-10 py-4 hover:bg-[#333] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-[#1C2A5A] text-white px-10 py-4 hover:bg-[#2A3D7A] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? "Sending..." : "Send Enquiry"}
       </button>

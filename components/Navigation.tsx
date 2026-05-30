@@ -37,11 +37,11 @@ export default function Navigation() {
   }, [menuOpen]);
 
   const navBg = scrolled || !isHome || menuOpen
-    ? "bg-[#fafaf8]/95 backdrop-blur-sm border-b border-[#e8e0d6]"
+    ? "bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#E2D9C8]"
     : "bg-transparent";
 
   const textColor = scrolled || !isHome || menuOpen
-    ? "text-[#1a1a1a]"
+    ? "text-[#1C2A5A]"
     : "text-white";
 
   return (
@@ -50,7 +50,7 @@ export default function Navigation() {
     >
       <nav className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className={`font-[var(--font-cormorant)] text-xl md:text-2xl font-light tracking-[0.15em] uppercase transition-colors duration-300 ${textColor}`}>
+        <Link href="/" className={`font-[var(--font-tenor)] text-xl md:text-2xl font-light tracking-[0.15em] uppercase transition-colors duration-300 ${textColor}`}>
           Elara Voss
         </Link>
 
@@ -60,7 +60,7 @@ export default function Navigation() {
             <li key={href}>
               <Link
                 href={href}
-                className={`font-[var(--font-jost)] text-xs tracking-[0.18em] uppercase transition-colors duration-300 hover:opacity-60 ${textColor} ${pathname === href ? "border-b border-current pb-0.5" : ""}`}
+                className={`font-[var(--font-roboto)] text-xs tracking-[0.18em] uppercase transition-colors duration-300 hover:opacity-60 ${textColor} ${pathname === href ? "border-b border-current pb-0.5" : ""}`}
               >
                 {label}
               </Link>
@@ -100,7 +100,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "100dvh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden bg-[#fafaf8] flex flex-col items-center justify-center overflow-hidden"
+            className="md:hidden bg-[#F5F1E8] flex flex-col items-center justify-center overflow-hidden"
           >
             <ul className="flex flex-col items-center gap-8">
               {links.map(({ href, label }, i) => (
@@ -112,7 +112,7 @@ export default function Navigation() {
                 >
                   <Link
                     href={href}
-                    className={`font-[var(--font-cormorant)] text-3xl font-light tracking-widest text-[#1a1a1a] hover:text-[#9c9289] transition-colors ${pathname === href ? "text-[#9c9289]" : ""}`}
+                    className={`font-[var(--font-tenor)] text-3xl font-light tracking-widest text-[#1C2A5A] hover:text-[#A85232] transition-colors ${pathname === href ? "text-[#A85232]" : ""}`}
                   >
                     {label}
                   </Link>
@@ -127,7 +127,7 @@ export default function Navigation() {
             >
               <Link
                 href="/contact"
-                className="font-[var(--font-jost)] text-xs tracking-[0.2em] uppercase border border-[#1a1a1a] px-8 py-3 hover:bg-[#1a1a1a] hover:text-white transition-all duration-300"
+                className="font-[var(--font-roboto)] text-xs tracking-[0.2em] uppercase border border-[#1C2A5A] px-8 py-3 hover:bg-[#1C2A5A] hover:text-white transition-all duration-300"
               >
                 Book a Session
               </Link>

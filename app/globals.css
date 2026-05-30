@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf8;
-  --foreground: #1a1a1a;
-  --beige: #f5f0e8;
-  --warm-grey: #9c9289;
-  --muted: #6b6460;
+  --background: #F5F1E8;
+  --foreground: #1C2A5A;
+  --umber: #624332;
+  --rust: #A85232;
+  --border: #E2D9C8;
+  --muted: #B8A898;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-beige: var(--beige);
-  --color-warm-grey: var(--warm-grey);
+  --color-umber: var(--umber);
+  --color-rust: var(--rust);
+  --color-border: var(--border);
   --color-muted: var(--muted);
 }
 
@@ -27,29 +29,27 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Georgia', serif;
+  font-family: var(--font-roboto), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #d4c5b0;
-  color: #1a1a1a;
+  background: #A85232;
+  color: #F5F1E8;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #fafaf8;
+  background: #F5F1E8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c8bdb4;
+  background: #B8A898;
   border-radius: 3px;
 }
 
-/* Lightbox overlay */
 .lightbox-open {
   overflow: hidden;
 }

@@ -93,12 +93,12 @@ export default function ServicesPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-[#f5f0e8]">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-[#F5F1E8]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-4">
+          <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-4">
             What I offer
           </p>
-          <h1 className="font-[var(--font-cormorant)] text-5xl md:text-6xl lg:text-7xl font-light text-[#1a1a1a] leading-tight max-w-2xl">
+          <h1 className="font-[var(--font-tenor)] text-5xl md:text-6xl lg:text-7xl font-light text-[#1C2A5A] leading-tight max-w-2xl">
             Services &
             <br />
             <em className="italic">Packages</em>
@@ -133,31 +133,31 @@ export default function ServicesPage() {
 
                 {/* Content */}
                 <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-4">
+                  <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-4">
                     0{i + 1}
                   </p>
-                  <h2 className="font-[var(--font-cormorant)] text-4xl md:text-5xl font-light text-[#1a1a1a] mb-3">
+                  <h2 className="font-[var(--font-tenor)] text-4xl md:text-5xl font-light text-[#1C2A5A] mb-3">
                     {service.title}
                   </h2>
-                  <p className="font-[var(--font-cormorant)] text-xl italic text-[#9c9289] mb-6">
+                  <p className="font-[var(--font-tenor)] text-xl italic text-[#A85232] mb-6">
                     {service.tagline}
                   </p>
-                  <p className="font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide mb-8">
+                  <p className="font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide mb-8">
                     {service.description}
                   </p>
 
                   {/* Included */}
                   <div className="mb-8">
-                    <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#1a1a1a] mb-4">
+                    <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#1C2A5A] mb-4">
                       What&apos;s included
                     </p>
                     <ul className="space-y-2">
                       {service.included.map((item) => (
                         <li
                           key={item}
-                          className="font-[var(--font-jost)] text-sm text-[#6b6460] tracking-wide flex items-start gap-3"
+                          className="font-[var(--font-roboto)] text-sm text-[#624332] tracking-wide flex items-start gap-3"
                         >
-                          <span className="text-[#c8bdb4] mt-0.5">—</span>
+                          <span className="text-[#B8A898] mt-0.5">—</span>
                           {item}
                         </li>
                       ))}
@@ -165,18 +165,18 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Pricing & CTA */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6 border-t border-[#e8e0d6]">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6 border-t border-[#E2D9C8]">
                     <div>
-                      <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#9c9289] mb-1">
+                      <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-1">
                         Starting from
                       </p>
-                      <p className="font-[var(--font-cormorant)] text-4xl font-light text-[#1a1a1a]">
+                      <p className="font-[var(--font-tenor)] text-4xl font-light text-[#1C2A5A]">
                         {service.from}
                       </p>
                     </div>
                     <Link
                       href={`/contact?service=${service.id}`}
-                      className="font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase bg-[#1a1a1a] text-white px-8 py-4 hover:bg-[#333] transition-colors duration-300"
+                      className="font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-[#1C2A5A] text-white px-8 py-4 hover:bg-[#2A3D7A] transition-colors duration-300"
                     >
                       Enquire Now
                     </Link>
@@ -190,19 +190,19 @@ export default function ServicesPage() {
 
       {/* FAQ note */}
       <FadeIn>
-        <section className="border-t border-[#e8e0d6] py-16 md:py-20">
+        <section className="border-t border-[#E2D9C8] py-16 md:py-20">
           <div className="max-w-2xl mx-auto px-6 text-center">
-            <p className="font-[var(--font-cormorant)] text-2xl font-light text-[#1a1a1a] mb-4">
+            <p className="font-[var(--font-tenor)] text-2xl font-light text-[#1C2A5A] mb-4">
               Custom packages are always available
             </p>
-            <p className="font-[var(--font-jost)] text-sm text-[#6b6460] leading-relaxed tracking-wide mb-8">
+            <p className="font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide mb-8">
               If your event doesn&apos;t quite fit the above or you have
               something unique in mind, reach out. I love working on bespoke
               projects and I&apos;m always happy to talk through your vision.
             </p>
             <Link
               href="/contact"
-              className="inline-block font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase border border-[#1a1a1a] px-10 py-4 hover:bg-[#1a1a1a] hover:text-white transition-all duration-300"
+              className="inline-block font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase border border-[#1C2A5A] px-10 py-4 hover:bg-[#1C2A5A] hover:text-white transition-all duration-300"
             >
               Get in touch
             </Link>

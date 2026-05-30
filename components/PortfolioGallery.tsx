@@ -58,15 +58,15 @@ export default function PortfolioGallery() {
   return (
     <section className="max-w-7xl mx-auto px-6 md:px-10 pb-24">
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 md:gap-6 mb-10 pb-6 border-b border-[#e8e0d6]">
+      <div className="flex flex-wrap gap-3 md:gap-6 mb-10 pb-6 border-b border-[#E2D9C8]">
         {filters.map(({ label, value }) => (
           <button
             key={value}
             onClick={() => handleFilter(value)}
-            className={`font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase pb-1 transition-all duration-300 ${
+            className={`font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase pb-1 transition-all duration-300 ${
               active === value
-                ? "text-[#1a1a1a] border-b border-[#1a1a1a]"
-                : "text-[#9c9289] hover:text-[#1a1a1a]"
+                ? "text-[#1C2A5A] border-b border-[#1C2A5A]"
+                : "text-[#A85232] hover:text-[#1C2A5A]"
             }`}
           >
             {label}
@@ -75,7 +75,7 @@ export default function PortfolioGallery() {
       </div>
 
       {/* Count */}
-      <p className="font-[var(--font-jost)] text-[10px] tracking-widest uppercase text-[#c8bdb4] mb-8">
+      <p className="font-[var(--font-roboto)] text-[10px] tracking-widest uppercase text-[#B8A898] mb-8">
         {filtered.length} {filtered.length === 1 ? "image" : "images"}
       </p>
 
@@ -109,7 +109,7 @@ export default function PortfolioGallery() {
                   loading={i < 6 ? "eager" : "lazy"}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                  <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     View
                   </p>
                 </div>

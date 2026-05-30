@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Tenor_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
-const cormorant = Cormorant_Garamond({
+const tenorSans = Tenor_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
+  weight: ["400"],
+  variable: "--font-tenor",
   display: "swap",
 });
 
-const jost = Jost({
+const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
-  variable: "--font-jost",
+  variable: "--font-roboto",
   display: "swap",
 });
 
@@ -69,8 +69,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="bg-[#fafaf8] text-[#1a1a1a]">
+    <html lang="en" className={`${tenorSans.variable} ${roboto.variable}`}>
+      <body className="bg-[#F5F1E8] text-[#1C2A5A]">
         <Navigation />
         <main>{children}</main>
         <Footer />

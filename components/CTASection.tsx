@@ -22,15 +22,15 @@ export default function CTASection({
   secondaryHref = "/portfolio",
   dark = false,
 }: CTASectionProps) {
-  const bg = dark ? "bg-[#1a1a1a]" : "bg-[#f5f0e8]";
-  const text = dark ? "text-white" : "text-[#1a1a1a]";
-  const sub = dark ? "text-white/60" : "text-[#6b6460]";
+  const bg = dark ? "bg-[#1C2A5A]" : "bg-[#F5F1E8]";
+  const text = dark ? "text-white" : "text-[#1C2A5A]";
+  const sub = dark ? "text-white/60" : "text-[#624332]";
   const btn1 = dark
-    ? "bg-white text-[#1a1a1a] hover:bg-white/90"
-    : "bg-[#1a1a1a] text-white hover:bg-[#333]";
+    ? "bg-white text-[#1C2A5A] hover:bg-white/90"
+    : "bg-[#1C2A5A] text-white hover:bg-[#2A3D7A]";
   const btn2 = dark
-    ? "border-white/50 text-white hover:bg-white hover:text-[#1a1a1a]"
-    : "border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white";
+    ? "border-white/50 text-white hover:bg-white hover:text-[#1C2A5A]"
+    : "border-[#1C2A5A] text-[#1C2A5A] hover:bg-[#1C2A5A] hover:text-white";
 
   return (
     <section className={`${bg} py-20 md:py-28`}>
@@ -41,22 +41,22 @@ export default function CTASection({
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className={`font-[var(--font-cormorant)] text-4xl md:text-5xl font-light ${text} mb-5`}>
+          <h2 className={`font-[var(--font-tenor)] text-4xl md:text-5xl font-light ${text} mb-5`}>
             {heading}
           </h2>
-          <p className={`font-[var(--font-jost)] text-sm ${sub} leading-relaxed tracking-wide max-w-lg mx-auto mb-10`}>
+          <p className={`font-[var(--font-roboto)] text-sm ${sub} leading-relaxed tracking-wide max-w-lg mx-auto mb-10`}>
             {subheading}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={primaryHref}
-              className={`font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase px-10 py-4 transition-colors duration-300 ${btn1}`}
+              className={`font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase px-10 py-4 transition-colors duration-300 ${btn1}`}
             >
               {primaryLabel}
             </Link>
             <Link
               href={secondaryHref}
-              className={`font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase border px-10 py-4 transition-all duration-300 ${btn2}`}
+              className={`font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase border px-10 py-4 transition-all duration-300 ${btn2}`}
             >
               {secondaryLabel}
             </Link>

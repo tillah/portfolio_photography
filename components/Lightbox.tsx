@@ -59,13 +59,13 @@ export default function Lightbox({
           {/* Close */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10 font-[var(--font-jost)] text-xs tracking-[0.2em] uppercase"
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10 font-[var(--font-roboto)] text-xs tracking-[0.2em] uppercase"
           >
             Close ✕
           </button>
 
           {/* Counter */}
-          <p className="absolute top-6 left-6 text-white/50 font-[var(--font-jost)] text-xs tracking-widest">
+          <p className="absolute top-6 left-6 text-white/50 font-[var(--font-roboto)] text-xs tracking-widest">
             {currentIndex + 1} / {photos.length}
           </p>
 
@@ -107,7 +107,7 @@ export default function Lightbox({
           </button>
 
           {/* Caption */}
-          <p className="absolute bottom-6 text-white/50 font-[var(--font-jost)] text-xs tracking-wide">
+          <p className="absolute bottom-6 text-white/50 font-[var(--font-roboto)] text-xs tracking-wide">
             {photo.alt}
           </p>
         </motion.div>

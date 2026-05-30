@@ -57,12 +57,12 @@ export default function HomePage() {
 
       {/* Intro strip */}
       <FadeIn>
-        <section className="py-16 md:py-20 border-b border-[#e8e0d6]">
+        <section className="py-16 md:py-20 border-b border-[#E2D9C8]">
           <div className="max-w-2xl mx-auto px-6 text-center">
-            <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-6">
+            <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-6">
               London — Est. 2018
             </p>
-            <h2 className="font-[var(--font-cormorant)] text-3xl md:text-4xl font-light text-[#1a1a1a] leading-relaxed">
+            <h2 className="font-[var(--font-tenor)] text-3xl md:text-4xl font-light text-[#1C2A5A] leading-relaxed">
               Life is made of fleeting, extraordinary moments.
               <br />
               <span className="italic">My work is to preserve them.</span>
@@ -76,16 +76,16 @@ export default function HomePage() {
         <FadeIn>
           <div className="flex justify-between items-end mb-12">
             <div>
-              <p className="font-[var(--font-jost)] text-[10px] tracking-[0.3em] uppercase text-[#9c9289] mb-3">
+              <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.3em] uppercase text-[#A85232] mb-3">
                 Specialities
               </p>
-              <h2 className="font-[var(--font-cormorant)] text-4xl md:text-5xl font-light text-[#1a1a1a]">
+              <h2 className="font-[var(--font-tenor)] text-4xl md:text-5xl font-light text-[#1C2A5A]">
                 Every occasion, honoured
               </h2>
             </div>
             <a
               href="/portfolio"
-              className="hidden md:block font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#6b6460] hover:text-[#1a1a1a] transition-colors border-b border-[#c8bdb4] pb-px"
+              className="hidden md:block font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#624332] hover:text-[#1C2A5A] transition-colors border-b border-[#B8A898] pb-px"
             >
               View all work
             </a>
@@ -111,12 +111,12 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-black/55" />
           <div className="relative max-w-3xl mx-auto px-6 text-center text-white">
-            <p className="font-[var(--font-cormorant)] text-3xl md:text-5xl font-light leading-relaxed italic">
+            <p className="font-[var(--font-tenor)] text-3xl md:text-5xl font-light leading-relaxed italic">
               &ldquo;A photograph is the pause button of life —
               <br />
               the one moment that never moves.&rdquo;
             </p>
-            <p className="font-[var(--font-jost)] text-xs tracking-[0.2em] uppercase text-white/50 mt-8">
+            <p className="font-[var(--font-roboto)] text-xs tracking-[0.2em] uppercase text-white/50 mt-8">
               Elara Voss
             </p>
           </div>

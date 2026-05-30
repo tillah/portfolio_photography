@@ -39,16 +39,16 @@ export default function CategoryCard({
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-500" />
           <div className="absolute bottom-0 left-0 right-0 p-6">
-            <p className="font-[var(--font-cormorant)] text-2xl font-light text-white tracking-wide">
+            <p className="font-[var(--font-tenor)] text-2xl font-light text-white tracking-wide">
               {title}
             </p>
           </div>
         </div>
         <div className="pt-4 pb-2">
-          <p className="font-[var(--font-jost)] text-xs text-[#6b6460] leading-relaxed tracking-wide">
+          <p className="font-[var(--font-roboto)] text-xs text-[#624332] leading-relaxed tracking-wide">
             {description}
           </p>
-          <p className="font-[var(--font-jost)] text-[10px] tracking-[0.2em] uppercase text-[#1a1a1a] mt-3 group-hover:gap-2 transition-all">
+          <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#1C2A5A] mt-3 group-hover:gap-2 transition-all">
             Explore →
           </p>
         </div>

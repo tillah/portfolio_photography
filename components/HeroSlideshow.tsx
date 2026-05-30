@@ -61,31 +61,31 @@ export default function HeroSlideshow() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="font-[var(--font-jost)] text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-white/70 mb-6"
+          className="font-[var(--font-roboto)] text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-white/70 mb-6"
         >
           {heroImages[current].label}
         </motion.p>
 
-        <h1 className="font-[var(--font-cormorant)] text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] max-w-4xl mb-8">
+        <h1 className="font-[var(--font-tenor)] text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] max-w-4xl mb-8">
           Capturing the moments
           <br />
           <em className="not-italic italic">that define your story</em>
         </h1>
 
-        <p className="font-[var(--font-jost)] text-sm md:text-base text-white/75 tracking-wide max-w-md mb-12">
+        <p className="font-[var(--font-roboto)] text-sm md:text-base text-white/75 tracking-wide max-w-md mb-12">
           Luxury event & portrait photography across London and beyond
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <a
             href="/contact"
-            className="font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase bg-white text-[#1a1a1a] px-10 py-4 hover:bg-white/90 transition-colors duration-300"
+            className="font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-white text-[#1C2A5A] px-10 py-4 hover:bg-white/90 transition-colors duration-300"
           >
             Book a Session
           </a>
           <a
             href="/portfolio"
-            className="font-[var(--font-jost)] text-[11px] tracking-[0.2em] uppercase border border-white/70 px-10 py-4 hover:bg-white hover:text-[#1a1a1a] transition-all duration-300"
+            className="font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase border border-white/70 px-10 py-4 hover:bg-white hover:text-[#1C2A5A] transition-all duration-300"
           >
             View Portfolio
           </a>
@@ -111,7 +111,7 @@ export default function HeroSlideshow() {
         className="absolute bottom-8 right-8 md:right-10 flex flex-col items-center gap-2 text-white/50"
       >
         <div className="w-px h-12 bg-white/30" />
-        <p className="font-[var(--font-jost)] text-[9px] tracking-[0.2em] uppercase rotate-90 origin-center mt-4">
+        <p className="font-[var(--font-roboto)] text-[9px] tracking-[0.2em] uppercase rotate-90 origin-center mt-4">
           Scroll
         </p>
       </motion.div>
