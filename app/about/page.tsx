@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Tehillah — luxury event and portrait photographer based in London. Learn about her approach to storytelling through photography.",
+    "Meet Tehillah — Birmingham-based photographer capturing raw, unguarded moments. Her story started at eight years old with a camcorder and never stopped.",
 };
 
 export default function AboutPage() {
@@ -59,40 +59,37 @@ export default function AboutPage() {
               </p>
 
               <h2 className="font-[var(--font-tenor)] text-4xl md:text-5xl font-light text-[#1C2A5A] leading-tight mb-8">
-                I believe every milestone
+                I&apos;m the invisible photographer.
                 <br />
-                <em className="italic">deserves to endure.</em>
+                <em className="italic">Let me document your story.</em>
               </h2>
 
               <div className="space-y-5 font-[var(--font-roboto)] text-sm text-[#624332] leading-relaxed tracking-wide">
                 <p>
-                  My name is Tehillah, and I&apos;ve spent the last eight
-                  years photographing the moments that shape people&apos;s
-                  lives. I&apos;m a London-based photographer with a deep
-                  passion for human connection, emotion, and the quiet power of
-                  a single image.
+                  Hey, my name is Tehillah. My journey started at eight years
+                  old with a JVC camcorder in my hands — a spark that would
+                  follow me through every chapter. Through my teens, through
+                  university, that flame never quite went out. But it wasn&apos;t
+                  until 2023, serving on my church&apos;s media team, that
+                  everything clicked. I stopped just recording and started
+                  feeling. I realised my true passion wasn&apos;t behind the
+                  camera — it was what I could capture with it.
                 </p>
                 <p>
-                  I didn&apos;t set out to become a photographer. I studied fine
-                  art at Central Saint Martins, and somewhere between painting
-                  and printmaking, I picked up a camera and never put it down.
-                  What drew me in wasn&apos;t the technology — it was the
-                  ability to freeze a feeling. A glance, a laugh, a tear. The
-                  split second before a yes.
+                  I&apos;m drawn to moments that breathe. The quiet glances. The
+                  raw, unguarded emotions that surface when people forget
+                  they&apos;re being watched. I move gently through your day,
+                  positioned to observe rather than direct, so nothing feels
+                  staged or rushed. You stay immersed in what matters — your
+                  loved ones, your moment, the feeling of it all.
                 </p>
                 <p>
-                  Over the years, I&apos;ve had the privilege of photographing
-                  hundreds of proposals, graduation days, milestone
-                  celebrations, and intimate studio sessions. Each one reminds
-                  me why this work matters. These aren&apos;t just photographs
-                  — they&apos;re evidence that you were here, that this moment
-                  happened, that it meant something.
-                </p>
-                <p>
-                  My approach is calm, unhurried, and deeply attentive. I work
-                  quietly in the background at events, and with gentle direction
-                  in the studio. I want you to feel comfortable, not performed.
-                  The best photographs happen when people forget I&apos;m there.
+                  With a keen eye and fast positioning, I capture candids that
+                  tell the truth. Not performed. Just real. My perfectionist
+                  nature means I&apos;m endlessly pushing boundaries, searching
+                  for that next level of emotional clarity in every frame.
+                  Because at the end of the day, I want you to look back at
+                  these images and feel exactly how it felt to live that moment.
                 </p>
               </div>
 
