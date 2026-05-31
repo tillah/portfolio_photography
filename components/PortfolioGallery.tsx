@@ -88,11 +88,6 @@ export default function PortfolioGallery() {
         ))}
       </div>
 
-      {/* Count */}
-      <p className="font-[var(--font-roboto)] text-[10px] tracking-widest uppercase text-[#B8A898] mb-8">
-        {filtered.length} {filtered.length === 1 ? "image" : "images"}
-      </p>
-
       {/* Masonry grid */}
       <AnimatePresence mode="wait">
         <motion.div
