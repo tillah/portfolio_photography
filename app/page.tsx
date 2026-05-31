@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import CategoryCard from "@/components/CategoryCard";
 import CTASection from "@/components/CTASection";
-import TestimonialSlider from "@/components/TestimonialSlider";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
@@ -118,8 +117,6 @@ export default function HomePage() {
           </div>
         </section>
       </FadeIn>
-
-      <TestimonialSlider />
 
       <CTASection dark />
     </>
