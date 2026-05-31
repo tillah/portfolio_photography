@@ -5,17 +5,17 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Photo, Category } from "@/lib/photos";
 
-const CATEGORIES: Category[] = ["proposals", "graduations", "birthdays", "studio"];
+const CATEGORIES: Category[] = ["proposals", "graduations", "events", "studio"];
 const CAT_LABELS: Record<Category, string> = {
   proposals: "Proposals",
   graduations: "Graduations",
-  birthdays: "Birthdays",
+  events: "Events",
   studio: "Studio",
 };
 const CAT_COLOURS: Record<Category, string> = {
   proposals: "bg-rose-900/40 text-rose-300 border-rose-800/40",
   graduations: "bg-blue-900/40 text-blue-300 border-blue-800/40",
-  birthdays: "bg-amber-900/40 text-amber-300 border-amber-800/40",
+  events: "bg-amber-900/40 text-amber-300 border-amber-800/40",
   studio: "bg-violet-900/40 text-violet-300 border-violet-800/40",
 };
 

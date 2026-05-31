@@ -28,12 +28,12 @@ const categories = [
     href: "/portfolio?category=graduations",
   },
   {
-    title: "Birthdays",
+    title: "Events",
     description:
       "From intimate gatherings to landmark celebrations — your story, beautifully told.",
     imageSrc: "/uploads/upload_1780196051135.jpg",
-    imageAlt: "Birthday celebration",
-    href: "/portfolio?category=birthdays",
+    imageAlt: "Event celebration",
+    href: "/portfolio?category=events",
   },
   {
     title: "Studio",

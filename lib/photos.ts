@@ -1,4 +1,4 @@
-export type Category = "proposals" | "graduations" | "birthdays" | "studio";
+export type Category = "proposals" | "graduations" | "events" | "studio";
 
 export interface Photo {
   id: string;
@@ -22,7 +22,7 @@ export const heroImages = [
   },
   {
     src: "/uploads/upload_1780195798270.jpg",
-    alt: "Birthday celebration",
+    alt: "Event celebration",
     label: "Celebrations",
   },
   {

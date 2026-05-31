@@ -11,7 +11,7 @@ const filters: { label: string; value: "all" | Category }[] = [
   { label: "All Work", value: "all" },
   { label: "Proposals", value: "proposals" },
   { label: "Graduations", value: "graduations" },
-  { label: "Birthdays", value: "birthdays" },
+  { label: "Events", value: "events" },
   { label: "Studio", value: "studio" },
 ];
 

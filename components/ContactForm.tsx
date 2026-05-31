@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 const eventTypes = [
   "Proposal Photography",
   "Graduation Shoot",
-  "Birthday / Event Photography",
+  "Event / Event Photography",
   "Studio Portrait Session",
   "Other",
 ];
@@ -19,7 +19,7 @@ export default function ContactForm() {
   const serviceMap: Record<string, string> = {
     proposals: "Proposal Photography",
     graduations: "Graduation Shoot",
-    birthdays: "Birthday / Event Photography",
+    events: "Event Photography",
     studio: "Studio Portrait Session",
   };
 

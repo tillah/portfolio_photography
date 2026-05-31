@@ -46,8 +46,8 @@ const services = [
     imageAlt: "Graduation photography",
   },
   {
-    id: "birthdays",
-    title: "Birthday & Event Photography",
+    id: "events",
+    title: "Event Photography",
     tagline: "Celebrations deserve to be remembered with the same joy they're lived.",
     description:
       "From elegant dinner parties to landmark milestone birthdays, I bring a quiet, editorial eye to your celebration. The laughter, the dancing, the people who matter most — nothing goes unnoticed.",
@@ -60,7 +60,7 @@ const services = [
       "Print-ready digital files",
     ],
     image: "/uploads/upload_1780197506720.jpg",
-    imageAlt: "Birthday celebration photography",
+    imageAlt: "Event celebration photography",
   },
   {
     id: "studio",
