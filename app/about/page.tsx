@@ -40,12 +40,12 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Portrait */}
           <FadeIn>
-            <div className="relative aspect-[3/4] max-w-md">
+            <div className="relative aspect-[3/4] max-w-md bg-[#1C2A5A] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=85"
+                src="/images/tehillah_portrait.jpg"
                 alt="Portrait of Tehillah, photographer"
                 fill
-                className="object-cover"
+                className="object-cover object-top mix-blend-multiply"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
