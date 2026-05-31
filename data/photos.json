@@ -1,129 +1,281 @@
 [
   {
-    "id": "p1",
-    "src": "https://images.unsplash.com/photo-1529636798458-92182e662485?w=1200&q=80",
-    "alt": "Romantic proposal at sunset",
-    "category": "proposals",
-    "width": 1200,
-    "height": 800
-  },
-  {
-    "id": "p2",
-    "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80",
-    "alt": "Engagement ring moment",
-    "category": "proposals",
-    "width": 1200,
-    "height": 1500
-  },
-  {
-    "id": "p3",
-    "src": "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
-    "alt": "Couple embracing after proposal",
-    "category": "proposals",
-    "width": 1200,
-    "height": 800
-  },
-  {
-    "id": "p4",
-    "src": "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80",
-    "alt": "Proposal in golden light",
-    "category": "proposals",
-    "width": 1200,
-    "height": 1600
-  },
-  {
-    "id": "g1",
-    "src": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80",
-    "alt": "Graduate celebrating with cap in the air",
-    "category": "graduations",
-    "width": 1200,
-    "height": 800
-  },
-  {
-    "id": "g2",
-    "src": "https://images.unsplash.com/photo-1627556592933-847e2c5e79a3?w=1200&q=80",
-    "alt": "Graduate portrait in gown",
-    "category": "graduations",
-    "width": 1200,
-    "height": 1500
-  },
-  {
-    "id": "g3",
-    "src": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80",
-    "alt": "Graduation day celebration",
-    "category": "graduations",
-    "width": 1200,
-    "height": 800
-  },
-  {
-    "id": "g4",
-    "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80",
-    "alt": "Graduate with diploma",
-    "category": "graduations",
-    "width": 1200,
-    "height": 1600
-  },
-  {
-    "id": "b1",
-    "src": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=1200&q=80",
-    "alt": "Birthday celebration with candles",
+    "id": "upload_1780195798270",
+    "src": "/uploads/upload_1780195798270.jpg",
+    "alt": "Candid Birthday Surprise",
     "category": "birthdays",
     "width": 1200,
     "height": 800
   },
   {
-    "id": "b2",
-    "src": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&q=80",
-    "alt": "Elegant birthday party details",
-    "category": "birthdays",
-    "width": 1200,
-    "height": 1500
-  },
-  {
-    "id": "b3",
-    "src": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    "alt": "Birthday portraits with balloons",
+    "id": "upload_1780195817046",
+    "src": "/uploads/upload_1780195817046.jpg",
+    "alt": "warm birthday cake shot",
     "category": "birthdays",
     "width": 1200,
     "height": 800
   },
   {
-    "id": "b4",
-    "src": "https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?w=1200&q=80",
-    "alt": "Milestone birthday celebration",
-    "category": "birthdays",
-    "width": 1200,
-    "height": 1600
-  },
-  {
-    "id": "s1",
-    "src": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=80",
-    "alt": "Studio portrait with dramatic lighting",
-    "category": "studio",
-    "width": 1200,
-    "height": 1500
-  },
-  {
-    "id": "s2",
-    "src": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=80",
-    "alt": "Elegant studio portrait session",
+    "id": "upload_1780195936211",
+    "src": "/uploads/upload_1780195936211.jpg",
+    "alt": "denim close up ",
     "category": "studio",
     "width": 1200,
     "height": 800
   },
   {
-    "id": "s3",
-    "src": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1200&q=80",
-    "alt": "High-fashion studio portrait",
-    "category": "studio",
+    "id": "upload_1780196031882",
+    "src": "/uploads/upload_1780196031882.jpg",
+    "alt": "head shot",
+    "category": "birthdays",
     "width": 1200,
-    "height": 1600
+    "height": 800
   },
   {
-    "id": "s4",
-    "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80",
-    "alt": "Studio portrait with natural tones",
+    "id": "upload_1780196051135",
+    "src": "/uploads/upload_1780196051135.jpg",
+    "alt": "The Nonchalant",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370122",
+    "src": "/uploads/upload_1780197370122.jpg",
+    "alt": " DSC1200",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370163",
+    "src": "/uploads/upload_1780197370163.jpg",
+    "alt": " DSC1464",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370202",
+    "src": "/uploads/upload_1780197370202.jpg",
+    "alt": " DSC1859",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370230",
+    "src": "/uploads/upload_1780197370230.jpg",
+    "alt": " DSC2160",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370266",
+    "src": "/uploads/upload_1780197370266.jpg",
+    "alt": " DSC2213",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370590",
+    "src": "/uploads/upload_1780197370590.jpg",
+    "alt": " DSC5411",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370875",
+    "src": "/uploads/upload_1780197370875.jpg",
+    "alt": " DSC5622 2",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197370947",
+    "src": "/uploads/upload_1780197370947.jpg",
+    "alt": " DSC5636",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197371024",
+    "src": "/uploads/upload_1780197371024.jpg",
+    "alt": " DSC5699",
+    "category": "graduations",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197390339",
+    "src": "/uploads/upload_1780197390339.jpg",
+    "alt": " DSC0023",
     "category": "studio",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197390349",
+    "src": "/uploads/upload_1780197390349.jpg",
+    "alt": " DSC6445",
+    "category": "studio",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197390357",
+    "src": "/uploads/upload_1780197390357.jpg",
+    "alt": " DSC6523",
+    "category": "studio",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197390364",
+    "src": "/uploads/upload_1780197390364.jpg",
+    "alt": " DSC6548",
+    "category": "studio",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197390370",
+    "src": "/uploads/upload_1780197390370.jpg",
+    "alt": " DSC6557",
+    "category": "studio",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506644",
+    "src": "/uploads/upload_1780197506644.jpg",
+    "alt": " DSC2979",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506657",
+    "src": "/uploads/upload_1780197506657.jpg",
+    "alt": " DSC5711",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506672",
+    "src": "/uploads/upload_1780197506672.jpg",
+    "alt": " DSC5721",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506682",
+    "src": "/uploads/upload_1780197506682.jpg",
+    "alt": " DSC5723",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506690",
+    "src": "/uploads/upload_1780197506690.jpg",
+    "alt": " DSC5733",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506720",
+    "src": "/uploads/upload_1780197506720.jpg",
+    "alt": " DSC6166",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506753",
+    "src": "/uploads/upload_1780197506753.jpg",
+    "alt": " DSC6169",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506786",
+    "src": "/uploads/upload_1780197506786.jpg",
+    "alt": " DSC6172",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506800",
+    "src": "/uploads/upload_1780197506800.jpg",
+    "alt": " DSC9078",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197506806",
+    "src": "/uploads/upload_1780197506806.jpg",
+    "alt": " DSC9171",
+    "category": "birthdays",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552263",
+    "src": "/uploads/upload_1780197552263.jpg",
+    "alt": " DSC0034",
+    "category": "proposals",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552287",
+    "src": "/uploads/upload_1780197552287.jpg",
+    "alt": " DSC0097",
+    "category": "proposals",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552303",
+    "src": "/uploads/upload_1780197552303.jpg",
+    "alt": " DSC0155",
+    "category": "proposals",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552584",
+    "src": "/uploads/upload_1780197552584.jpg",
+    "alt": " DSC0225",
+    "category": "proposals",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552637",
+    "src": "/uploads/upload_1780197552637.jpg",
+    "alt": " DSC0523",
+    "category": "proposals",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "upload_1780197552661",
+    "src": "/uploads/upload_1780197552661.jpg",
+    "alt": " DSC1062",
+    "category": "proposals",
     "width": 1200,
     "height": 800
   }
