@@ -42,10 +42,10 @@ export default function AboutPage() {
           <FadeIn>
             <div className="relative aspect-[3/4] max-w-md bg-[#1C2A5A] overflow-hidden">
               <Image
-                src="/images/tehillah_portrait.jpg"
+                src="/images/tehillah-potrait_.png"
                 alt="Portrait of Tehillah, photographer"
                 fill
-                className="object-cover object-top mix-blend-multiply"
+                className="object-contain object-bottom"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
