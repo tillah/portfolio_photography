@@ -15,7 +15,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[400px] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1920&q=80"
+          src="/images/_DSC9262.jpg"
           alt="Tehillah — Birmingham photographer"
           fill
           priority
@@ -42,7 +42,7 @@ export default function AboutPage() {
           <FadeIn>
             <div className="relative aspect-[3/4] max-w-md overflow-hidden">
               <Image
-                src="/images/tehillah-portrait-2.jpg"
+                src="/images/_DSC5523.jpg"
                 alt="Portrait of Tehillah, photographer"
                 fill
                 className="object-cover object-top"
