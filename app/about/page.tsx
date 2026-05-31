@@ -59,8 +59,6 @@ export default function AboutPage() {
               </p>
 
               <h2 className="font-[var(--font-tenor)] text-4xl md:text-5xl font-light text-[#1C2A5A] leading-tight mb-8">
-                I&apos;m the invisible photographer.
-                <br />
                 <em className="italic">Let me document your story.</em>
               </h2>
 
