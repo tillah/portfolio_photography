@@ -272,6 +272,93 @@ function UploadDrawer({
   );
 }
 
+// ── Edit modal ────────────────────────────────────────────────────────────────
+function EditModal({
+  photo,
+  password,
+  onSaved,
+  onClose,
+}: {
+  photo: Photo;
+  password: string;
+  onSaved: (photos: Photo[]) => void;
+  onClose: () => void;
+}) {
+  const [alt, setAlt] = useState(photo.alt);
+  const [category, setCategory] = useState<Category>(photo.category);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  const handleSave = async () => {
+    setSaving(true);
+    const res = await fetch(`/api/admin/photos/${photo.id}`, {
+      method: "PATCH",
+      headers: { "x-admin-password": password, "Content-Type": "application/json" },
+      body: JSON.stringify({ alt, category }),
+    });
+    const data = await res.json();
+    setSaving(false);
+    if (res.ok) { onSaved(data.photos); onClose(); }
+  };
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6"
+      onClick={onClose}>
+      <motion.div initial={{ scale: 0.95, y: 12 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-[#12151f] border border-white/10 rounded-xl w-full max-w-md p-6 shadow-2xl">
+        <div className="flex items-center justify-between mb-5">
+          <p className="font-[var(--font-tenor)] text-lg text-white">Edit Photo</p>
+          <button onClick={onClose} className="text-white/30 hover:text-white transition-colors">✕</button>
+        </div>
+
+        {/* Preview */}
+        <div className="relative aspect-video rounded-lg overflow-hidden bg-white/5 mb-5">
+          <Image src={photo.src} alt={photo.alt} fill className="object-cover"
+            unoptimized={photo.src.startsWith("/uploads/")} />
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label className="block text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1.5">Description / Alt Text</label>
+            <input type="text" value={alt} onChange={(e) => setAlt(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded px-3 py-2.5 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#A85232] transition-colors" />
+          </div>
+          <div>
+            <label className="block text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1.5">Category</label>
+            <div className="grid grid-cols-2 gap-2">
+              {CATEGORIES.map((c) => (
+                <button key={c} type="button" onClick={() => setCategory(c)}
+                  className={`py-2 text-xs tracking-wide rounded border transition-all ${
+                    category === c ? "border-[#A85232] bg-[#A85232]/15 text-white" : "border-white/10 text-white/40 hover:text-white"
+                  }`}>
+                  {CAT_LABELS[c]}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-3 mt-6">
+          <button onClick={onClose} className="flex-1 border border-white/10 text-white/40 hover:text-white py-2.5 text-xs tracking-[0.15em] uppercase rounded transition-all">
+            Cancel
+          </button>
+          <button onClick={handleSave} disabled={saving || !alt.trim()}
+            className="flex-1 bg-[#A85232] text-white hover:bg-[#8a4228] py-2.5 text-xs tracking-[0.15em] uppercase rounded transition-colors disabled:opacity-30">
+            {saving ? "Saving…" : "Save Changes"}
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 // ── Main admin page ───────────────────────────────────────────────────────────
 export default function AdminPage() {
   const [password, setPassword] = useState<string | null>(null);
@@ -282,6 +369,7 @@ export default function AdminPage() {
   const [selectMode, setSelectMode] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [editing, setEditing] = useState<Photo | null>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("admin_pw");
@@ -464,9 +552,19 @@ export default function AdminPage() {
                     {/* Meta */}
                     <div className="p-2.5">
                       <p className="text-white/60 text-[11px] truncate mb-1.5">{photo.alt}</p>
-                      <span className={`text-[9px] tracking-wide px-2 py-0.5 rounded-full border ${CAT_COLOURS[photo.category]}`}>
-                        {CAT_LABELS[photo.category]}
-                      </span>
+                      <div className="flex items-center justify-between gap-1">
+                        <span className={`text-[9px] tracking-wide px-2 py-0.5 rounded-full border ${CAT_COLOURS[photo.category]}`}>
+                          {CAT_LABELS[photo.category]}
+                        </span>
+                        {!selectMode && (
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setEditing(photo); }}
+                            className="text-[9px] tracking-wide text-white/20 hover:text-[#A85232] transition-colors px-1"
+                          >
+                            Edit
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </motion.div>
                 );
@@ -488,6 +586,18 @@ export default function AdminPage() {
               onClose={() => setShowUpload(false)}
             />
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Edit modal */}
+      <AnimatePresence>
+        {editing && password && (
+          <EditModal
+            photo={editing}
+            password={password}
+            onSaved={(photos) => setPhotos(photos)}
+            onClose={() => setEditing(null)}
+          />
         )}
       </AnimatePresence>
     </div>

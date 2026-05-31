@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { removePhoto } from "@/lib/adminPhotos";
+import { removePhoto, updatePhoto } from "@/lib/adminPhotos";
+import { Category } from "@/lib/photos";
 import fs from "fs";
 import path from "path";
 
@@ -25,5 +26,16 @@ export async function DELETE(
     if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
   }
 
+  return NextResponse.json({ photos });
+}
+
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const { id } = await params;
+  const { alt, category } = await req.json() as { alt?: string; category?: Category };
+  const photos = updatePhoto(id, { ...(alt !== undefined && { alt }), ...(category !== undefined && { category }) });
   return NextResponse.json({ photos });
 }

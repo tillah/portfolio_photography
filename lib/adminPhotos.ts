@@ -29,3 +29,9 @@ export function removePhoto(id: string): Photo[] {
   writePhotos(photos);
   return photos;
 }
+
+export function updatePhoto(id: string, patch: Partial<Pick<Photo, "alt" | "category">>): Photo[] {
+  const photos = readPhotos().map((p) => p.id === id ? { ...p, ...patch } : p);
+  writePhotos(photos);
+  return photos;
+}
