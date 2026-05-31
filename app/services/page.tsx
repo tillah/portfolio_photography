@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Photography services by Tehillah — proposal photography, graduation sessions, birthday events, and studio portraits. View packages and pricing.",
+    "Photography services by Tehillah — proposal photography, graduation sessions, birthday events, and studio portraits. Enquire to secure your booking.",
 };
 
 const services = [
@@ -25,9 +25,7 @@ const services = [
       "Private online gallery",
       "Print-ready high-resolution files",
     ],
-    from: "£395",
-    image:
-      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&q=80",
+    image: "/uploads/upload_1780197552303.jpg",
     imageAlt: "Romantic proposal photography",
   },
   {
@@ -44,9 +42,7 @@ const services = [
       "Private online gallery",
       "High-resolution digital files",
     ],
-    from: "£345",
-    image:
-      "https://images.unsplash.com/photo-1627556592933-847e2c5e79a3?w=900&q=80",
+    image: "/uploads/upload_1780197370266.jpg",
     imageAlt: "Graduation photography",
   },
   {
@@ -63,9 +59,7 @@ const services = [
       "Private online gallery",
       "Print-ready digital files",
     ],
-    from: "£450",
-    image:
-      "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=900&q=80",
+    image: "/uploads/upload_1780197506720.jpg",
     imageAlt: "Birthday celebration photography",
   },
   {
@@ -82,9 +76,7 @@ const services = [
       "Private online gallery",
       "Commercial usage rights available",
     ],
-    from: "£295",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80",
+    image: "/uploads/upload_1780197390364.jpg",
     imageAlt: "Studio portrait session",
   },
 ];
@@ -128,6 +120,7 @@ export default function ServicesPage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    unoptimized={service.image.startsWith("/uploads/")}
                   />
                 </div>
 
@@ -164,21 +157,16 @@ export default function ServicesPage() {
                     </ul>
                   </div>
 
-                  {/* Pricing & CTA */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6 border-t border-[#E2D9C8]">
-                    <div>
-                      <p className="font-[var(--font-roboto)] text-[10px] tracking-[0.2em] uppercase text-[#A85232] mb-1">
-                        Starting from
-                      </p>
-                      <p className="font-[var(--font-tenor)] text-4xl font-light text-[#1C2A5A]">
-                        {service.from}
-                      </p>
-                    </div>
+                  {/* CTA */}
+                  <div className="pt-6 border-t border-[#E2D9C8]">
+                    <p className="font-[var(--font-roboto)] text-xs text-[#B8A898] tracking-wide mb-4">
+                      Pricing is tailored to every booking — enquire to discuss your vision.
+                    </p>
                     <Link
                       href={`/contact?service=${service.id}`}
-                      className="font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-[#1C2A5A] text-white px-8 py-4 hover:bg-[#2A3D7A] transition-colors duration-300"
+                      className="inline-block font-[var(--font-roboto)] text-[11px] tracking-[0.2em] uppercase bg-[#1C2A5A] text-white px-8 py-4 hover:bg-[#2A3D7A] transition-colors duration-300"
                     >
-                      Enquire Now
+                      Enquire to Book
                     </Link>
                   </div>
                 </div>
