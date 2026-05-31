@@ -11,22 +11,22 @@ export interface Photo {
 
 export const heroImages = [
   {
-    src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=1920&q=85",
-    alt: "Romantic proposal at golden hour",
+    src: "/uploads/upload_1780197552584.jpg",
+    alt: "Proposal moment",
     label: "Proposals",
   },
   {
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=85",
+    src: "/uploads/upload_1780197370202.jpg",
     alt: "Graduation celebration",
     label: "Graduations",
   },
   {
-    src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=85",
-    alt: "Elegant birthday celebration",
+    src: "/uploads/upload_1780195798270.jpg",
+    alt: "Birthday celebration",
     label: "Celebrations",
   },
   {
-    src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1920&q=85",
+    src: "/uploads/upload_1780197390349.jpg",
     alt: "Studio portrait session",
     label: "Studio",
   },

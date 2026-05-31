@@ -42,6 +42,7 @@ export default function HeroSlideshow() {
             className="object-cover"
             sizes="100vw"
             quality={90}
+            unoptimized={heroImages[current].src.startsWith("/uploads/")}
           />
         </motion.div>
       </AnimatePresence>

@@ -36,6 +36,7 @@ export default function CategoryCard({
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 25vw"
+            unoptimized={imageSrc.startsWith("/uploads/")}
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors duration-500" />
           <div className="absolute bottom-0 left-0 right-0 p-6">

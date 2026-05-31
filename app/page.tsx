@@ -16,17 +16,15 @@ const categories = [
     title: "Proposals",
     description:
       "The moment you say yes deserves to be remembered forever. Discreet, heartfelt, and beautifully captured.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&q=80",
-    imageAlt: "Romantic proposal at golden hour",
+    imageSrc: "/uploads/upload_1780197552637.jpg",
+    imageAlt: "Proposal moment",
     href: "/portfolio?category=proposals",
   },
   {
     title: "Graduations",
     description:
       "Years of dedication, one extraordinary day. Celebrate the achievement with images that honour the journey.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+    imageSrc: "/uploads/upload_1780197370163.jpg",
     imageAlt: "Graduation celebration",
     href: "/portfolio?category=graduations",
   },
@@ -34,17 +32,15 @@ const categories = [
     title: "Birthdays",
     description:
       "From intimate gatherings to landmark celebrations — your story, beautifully told.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80",
-    imageAlt: "Elegant birthday celebration",
+    imageSrc: "/uploads/upload_1780196051135.jpg",
+    imageAlt: "Birthday celebration",
     href: "/portfolio?category=birthdays",
   },
   {
     title: "Studio",
     description:
       "Timeless portraits in a controlled, creative environment. Just you, the light, and the lens.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80",
+    imageSrc: "/uploads/upload_1780197390357.jpg",
     imageAlt: "Studio portrait session",
     href: "/portfolio?category=studio",
   },
@@ -106,7 +102,7 @@ export default function HomePage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1920&q=80')",
+                "url('/uploads/upload_1780197552263.jpg')",
             }}
           />
           <div className="absolute inset-0 bg-black/55" />
