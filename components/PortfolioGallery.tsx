@@ -7,8 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Category, Photo } from "@/lib/photos";
 import Lightbox from "@/components/Lightbox";
 
+const HIGHLIGHTS_PER_CATEGORY = 3;
+
 const filters: { label: string; value: "all" | Category }[] = [
-  { label: "All Work", value: "all" },
+  { label: "Highlights", value: "all" },
   { label: "Proposals", value: "proposals" },
   { label: "Graduations", value: "graduations" },
   { label: "Events", value: "events" },
@@ -35,7 +37,11 @@ export default function PortfolioGallery() {
       .catch(() => setPhotos([]));
   }, []);
 
-  const filtered = active === "all" ? photos : photos.filter((p) => p.category === active);
+  const filtered = active === "all"
+    ? (["proposals", "graduations", "events", "studio"] as Category[]).flatMap((cat) =>
+        photos.filter((p) => p.category === cat).slice(0, HIGHLIGHTS_PER_CATEGORY)
+      )
+    : photos.filter((p) => p.category === active);
 
   const currentIndex = lightboxPhoto
     ? filtered.findIndex((p) => p.id === lightboxPhoto.id)
