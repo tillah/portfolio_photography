@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
     blob = await put(filename, file, {
       access: "public",
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
   } catch (err) {
     console.error("Blob upload error:", err);
