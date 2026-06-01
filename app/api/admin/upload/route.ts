@@ -29,10 +29,16 @@ export async function POST(req: NextRequest) {
   const filename = `photos/${id}.${ext}`;
 
   // Upload image to Vercel Blob
-  const blob = await put(filename, file, {
-    access: "public",
-    addRandomSuffix: false,
-  });
+  let blob;
+  try {
+    blob = await put(filename, file, {
+      access: "public",
+      addRandomSuffix: false,
+    });
+  } catch (err) {
+    console.error("Blob upload error:", err);
+    return NextResponse.json({ error: "Image upload failed", detail: String(err) }, { status: 500 });
+  }
 
   const photo: Photo = {
     id,
@@ -43,6 +49,13 @@ export async function POST(req: NextRequest) {
     height: 800,
   };
 
-  const photos = await addPhoto(photo);
+  let photos;
+  try {
+    photos = await addPhoto(photo);
+  } catch (err) {
+    console.error("addPhoto error:", err);
+    return NextResponse.json({ error: "Failed to save photo record", detail: String(err) }, { status: 500 });
+  }
+
   return NextResponse.json({ photo, photos }, { status: 201 });
 }
