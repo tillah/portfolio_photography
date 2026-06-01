@@ -401,16 +401,22 @@ export default function AdminPage() {
   const handleDeleteSelected = async () => {
     if (!password || selected.size === 0) return;
     setDeleting(true);
+    let updatedPhotos: Photo[] = [];
     for (const id of Array.from(selected)) {
-      await fetch(`/api/admin/photos/${id}`, {
+      const res = await fetch(`/api/admin/photos/${id}`, {
         method: "DELETE",
         headers: { "x-admin-password": password },
+        cache: "no-store",
       });
+      if (res.ok) {
+        const data = await res.json();
+        updatedPhotos = data.photos;
+      }
     }
-    // Refresh
-    const res = await fetch("/api/admin/photos", { headers: { "x-admin-password": password } });
-    const data = await res.json();
-    setPhotos(data);
+    // Use the photos list from the last DELETE response
+    if (updatedPhotos.length > 0 || selected.size > 0) {
+      setPhotos(updatedPhotos);
+    }
     setSelected(new Set());
     setSelectMode(false);
     setDeleting(false);
