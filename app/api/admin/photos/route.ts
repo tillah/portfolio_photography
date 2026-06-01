@@ -10,7 +10,7 @@ function authorized(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  return NextResponse.json(readPhotos());
+  return NextResponse.json(await readPhotos());
 }
 
 export async function POST(req: NextRequest) {
@@ -32,6 +32,6 @@ export async function POST(req: NextRequest) {
     height: 800,
   };
 
-  const photos = addPhoto(photo);
+  const photos = await addPhoto(photo);
   return NextResponse.json({ photo, photos }, { status: 201 });
 }

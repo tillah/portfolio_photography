@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 import { addPhoto } from "@/lib/adminPhotos";
 import { Category, Photo } from "@/lib/photos";
-import fs from "fs";
-import path from "path";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "admin123";
 
@@ -11,36 +10,39 @@ function authorized(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!authorized(req))
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
   const alt = formData.get("alt") as string;
   const category = formData.get("category") as Category;
 
-  if (!file || !alt || !category) {
-    return NextResponse.json({ error: "file, alt and category are required" }, { status: 400 });
-  }
+  if (!file || !alt || !category)
+    return NextResponse.json(
+      { error: "file, alt and category are required" },
+      { status: 400 }
+    );
 
   const id = `upload_${Date.now()}`;
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
-  const filename = `${id}.${ext}`;
-  const uploadsDir = path.join(process.cwd(), "public", "uploads");
+  const filename = `photos/${id}.${ext}`;
 
-  if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
-
-  const buffer = Buffer.from(await file.arrayBuffer());
-  fs.writeFileSync(path.join(uploadsDir, filename), buffer);
+  // Upload image to Vercel Blob
+  const blob = await put(filename, file, {
+    access: "public",
+    addRandomSuffix: false,
+  });
 
   const photo: Photo = {
     id,
-    src: `/uploads/${filename}`,
+    src: blob.url,
     alt,
     category,
     width: 1200,
     height: 800,
   };
 
-  const photos = addPhoto(photo);
+  const photos = await addPhoto(photo);
   return NextResponse.json({ photo, photos }, { status: 201 });
 }
