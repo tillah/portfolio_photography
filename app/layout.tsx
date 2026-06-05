@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Tenor_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import ConditionalShell from "@/components/ConditionalShell";
+import { Analytics } from "@vercel/analytics/next";
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${tenorSans.variable} ${roboto.variable}`}>
       <body>
         <ConditionalShell>{children}</ConditionalShell>
+        <Analytics />
       </body>
     </html>
   );
