@@ -15,7 +15,7 @@ const categories = [
     title: "Proposals",
     description:
       "The moment you say yes deserves to be remembered forever. Discreet, heartfelt, and beautifully captured.",
-    imageSrc: "/uploads/upload_1780197552303.jpg",
+    imageSrc: "/uploads/upload_1780197552263.jpg",
     imageAlt: "Proposal moment",
     href: "/portfolio?category=proposals",
   },
@@ -39,7 +39,7 @@ const categories = [
     title: "Studio",
     description:
       "Timeless portraits in a controlled, creative environment. Just you, the light, and the lens.",
-    imageSrc: "/uploads/upload_1780197390339.jpg",
+    imageSrc: "/uploads/upload_1780197390349.jpg",
     imageAlt: "Studio portrait session",
     href: "/portfolio?category=studio",
   },

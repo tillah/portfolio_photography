@@ -14,7 +14,7 @@ export interface Photo {
 
 export const heroImages = [
   {
-    src: "/uploads/upload_1780197552661.jpg",
+    src: "/uploads/upload_1780197552263.jpg",
     alt: "Proposal moment",
     label: "Proposals",
   },
@@ -29,7 +29,7 @@ export const heroImages = [
     label: "Celebrations",
   },
   {
-    src: "/uploads/upload_1780197390370.jpg",
+    src: "/uploads/upload_1780197390349.jpg",
     alt: "Studio portrait session",
     label: "Studio",
   },
