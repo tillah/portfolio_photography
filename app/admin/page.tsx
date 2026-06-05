@@ -359,6 +359,85 @@ function EditModal({
   );
 }
 
+// ── Blob status banner ────────────────────────────────────────────────────────
+type BlobStatus = { initialized: boolean; count: number; source: string } | null;
+
+function BlobStatusBanner({
+  status,
+  password,
+  onSynced,
+}: {
+  status: BlobStatus;
+  password: string;
+  onSynced: (photos: Photo[]) => void;
+}) {
+  const [syncing, setSyncing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSync = async () => {
+    setSyncing(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/sync", {
+        method: "POST",
+        headers: { "x-admin-password": password },
+      });
+      if (!res.ok) throw new Error(await res.text());
+      // Reload photos after sync
+      const photosRes = await fetch("/api/admin/photos", {
+        headers: { "x-admin-password": password },
+        cache: "no-store",
+      });
+      if (photosRes.ok) onSynced(await photosRes.json());
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setSyncing(false);
+    }
+  };
+
+  if (!status) return null;
+
+  // All good — show a subtle connected badge
+  if (status.initialized) {
+    return (
+      <div className="mb-6 flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-emerald-400/60">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+        Blob connected · {status.count} photos in database
+      </div>
+    );
+  }
+
+  // Not initialised — show warning + sync button
+  return (
+    <div className="mb-6 bg-amber-900/20 border border-amber-700/40 rounded-lg px-4 py-4">
+      <div className="flex items-start gap-3">
+        <span className="text-amber-400 text-lg shrink-0">⚠</span>
+        <div className="flex-1">
+          <p className="text-amber-300 text-xs font-medium mb-1 tracking-wide">
+            Database not initialised
+          </p>
+          <p className="text-amber-300/60 text-xs leading-relaxed mb-3">
+            The Blob store hasn&apos;t been set up yet. Changes made in the admin
+            won&apos;t persist to the website until you sync. This also clears any
+            stale data (old categories like &ldquo;birthday&rdquo;, missing images, etc).
+          </p>
+          {error && (
+            <p className="text-red-400 text-xs mb-2">Error: {error}</p>
+          )}
+          <button
+            onClick={handleSync}
+            disabled={syncing}
+            className="text-[10px] tracking-[0.2em] uppercase bg-amber-600 text-white hover:bg-amber-500 px-4 py-2 rounded transition-colors disabled:opacity-40"
+          >
+            {syncing ? "Syncing…" : "Sync database now"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main admin page ───────────────────────────────────────────────────────────
 export default function AdminPage() {
   const [password, setPassword] = useState<string | null>(null);
@@ -371,22 +450,70 @@ export default function AdminPage() {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [editing, setEditing] = useState<Photo | null>(null);
+  const [blobStatus, setBlobStatus] = useState<BlobStatus>(null);
+  const [syncing, setSyncing] = useState(false);
+
+  const checkBlobStatus = useCallback(async (pw: string) => {
+    try {
+      const res = await fetch("/api/admin/sync", {
+        headers: { "x-admin-password": pw },
+        cache: "no-store",
+      });
+      if (res.ok) setBlobStatus(await res.json());
+    } catch { /* ignore */ }
+  }, []);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("admin_pw");
     if (stored) {
-      fetch("/api/admin/photos", { headers: { "x-admin-password": stored } })
+      fetch("/api/admin/photos", {
+        headers: { "x-admin-password": stored },
+        cache: "no-store",
+      })
         .then((r) => r.ok ? r.json() : Promise.reject())
-        .then((data) => { setPassword(stored); setPhotos(data); })
+        .then((data) => {
+          setPassword(stored);
+          setPhotos(data);
+          checkBlobStatus(stored);
+        })
         .catch(() => sessionStorage.removeItem("admin_pw"));
     }
-  }, []);
+  }, [checkBlobStatus]);
 
   const handleLogin = useCallback((pw: string) => {
     setPassword(pw);
-    fetch("/api/admin/photos", { headers: { "x-admin-password": pw } })
-      .then((r) => r.json()).then(setPhotos);
-  }, []);
+    fetch("/api/admin/photos", {
+      headers: { "x-admin-password": pw },
+      cache: "no-store",
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setPhotos(data);
+        checkBlobStatus(pw);
+      });
+  }, [checkBlobStatus]);
+
+  // Manual sync from toolbar
+  const handleManualSync = useCallback(async () => {
+    if (!password) return;
+    setSyncing(true);
+    try {
+      const res = await fetch("/api/admin/sync", {
+        method: "POST",
+        headers: { "x-admin-password": password },
+      });
+      if (res.ok) {
+        const photosRes = await fetch("/api/admin/photos", {
+          headers: { "x-admin-password": password },
+          cache: "no-store",
+        });
+        if (photosRes.ok) setPhotos(await photosRes.json());
+        checkBlobStatus(password);
+      }
+    } finally {
+      setSyncing(false);
+    }
+  }, [password, checkBlobStatus]);
 
   const toggleSelect = (id: string) => {
     setSelected((prev) => {
@@ -465,6 +592,18 @@ export default function AdminPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Blob status banner */}
+        {password && (
+          <BlobStatusBanner
+            status={blobStatus}
+            password={password}
+            onSynced={(updatedPhotos) => {
+              setPhotos(updatedPhotos);
+              checkBlobStatus(password);
+            }}
+          />
+        )}
+
         {/* Stat chips */}
         <div className="flex gap-3 mb-8 overflow-x-auto pb-1">
           {([["all", "All"] as const, ...CATEGORIES.map((c) => [c, CAT_LABELS[c]] as const)]).map(([cat, label]) => {
@@ -500,6 +639,14 @@ export default function AdminPage() {
               <button onClick={() => setShowUpload(true)}
                 className="text-[10px] tracking-[0.15em] uppercase bg-[#A85232] text-white hover:bg-[#8a4228] px-5 py-2 rounded transition-colors">
                 + Upload Photos
+              </button>
+              <button
+                onClick={handleManualSync}
+                disabled={syncing}
+                title="Reset database from committed backup"
+                className="text-[10px] tracking-[0.15em] uppercase border border-white/15 text-white/40 hover:text-amber-300 hover:border-amber-700/50 px-4 py-2 rounded transition-all disabled:opacity-30"
+              >
+                {syncing ? "Syncing…" : "↺ Sync DB"}
               </button>
             </>
           ) : (
