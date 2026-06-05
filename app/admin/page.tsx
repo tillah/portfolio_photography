@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { upload } from "@vercel/blob/client";
 import { Photo, Category } from "@/lib/photos";
 
 const CATEGORIES: Category[] = ["proposals", "graduations", "events", "studio"];
@@ -106,18 +107,33 @@ function UploadDrawer({
   const handleUploadAll = async () => {
     setUploading(true);
     let lastPhotos: Photo[] = [];
+
     for (const item of queue.filter((i) => i.status === "pending")) {
       updateItem(item.id, { status: "uploading" });
       try {
-        const fd = new FormData();
-        fd.append("file", item.file);
-        fd.append("alt", item.alt || item.file.name);
-        fd.append("category", item.category);
-        const res = await fetch("/api/admin/upload", {
-          method: "POST",
-          headers: { "x-admin-password": password },
-          body: fd,
+        const id  = `upload_${Date.now()}`;
+        const ext = item.file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+
+        // Upload directly from browser to Vercel Blob — no 4.5 MB server limit
+        const blob = await upload(`photos/${id}.${ext}`, item.file, {
+          access: "public",
+          handleUploadUrl: "/api/admin/upload",
+          clientPayload: JSON.stringify({ password }),
         });
+
+        // Save metadata record
+        const res = await fetch("/api/admin/photos", {
+          method: "POST",
+          headers: { "x-admin-password": password, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id,
+            src:      blob.url,
+            alt:      item.alt || item.file.name,
+            category: item.category,
+            publicId: blob.pathname,
+          }),
+        });
+
         const data = await res.json();
         if (res.ok) {
           updateItem(item.id, { status: "done" });
@@ -130,6 +146,7 @@ function UploadDrawer({
         updateItem(item.id, { status: "error", errorMsg: String(e) });
       }
     }
+
     setUploading(false);
     if (lastPhotos.length) onUploaded(lastPhotos);
   };

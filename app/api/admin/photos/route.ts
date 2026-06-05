@@ -17,19 +17,28 @@ export async function POST(req: NextRequest) {
   if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
-  const { src, alt, category } = body as { src: string; alt: string; category: Category };
+  const { id: reqId, src, alt, category, publicId } = body as {
+    id?: string;
+    src: string;
+    alt: string;
+    category: Category;
+    publicId?: string;
+  };
 
   if (!src || !alt || !category) {
     return NextResponse.json({ error: "src, alt and category are required" }, { status: 400 });
   }
 
   const photo: Photo = {
-    id: `photo_${Date.now()}`,
+    id:       reqId ?? `upload_${Date.now()}`,
     src,
     alt,
     category,
-    width: 1200,
-    height: 800,
+    width:    1200,
+    height:   800,
+    published: true,
+    featured:  false,
+    ...(publicId && { publicId }),
   };
 
   const photos = await addPhoto(photo);
