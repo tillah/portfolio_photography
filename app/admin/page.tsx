@@ -65,6 +65,7 @@ interface QueuedFile {
   alt: string;
   category: Category;
   status: "pending" | "uploading" | "done" | "error";
+  errorMsg?: string;
 }
 
 function UploadDrawer({
@@ -122,10 +123,11 @@ function UploadDrawer({
           updateItem(item.id, { status: "done" });
           lastPhotos = data.photos;
         } else {
-          updateItem(item.id, { status: "error" });
+          const msg = data?.error ?? data?.detail ?? `HTTP ${res.status}`;
+          updateItem(item.id, { status: "error", errorMsg: msg });
         }
-      } catch {
-        updateItem(item.id, { status: "error" });
+      } catch (e) {
+        updateItem(item.id, { status: "error", errorMsg: String(e) });
       }
     }
     setUploading(false);
@@ -217,6 +219,9 @@ function UploadDrawer({
 
               {/* Fields */}
               <div className="flex-1 min-w-0 space-y-2">
+                {item.status === "error" && item.errorMsg && (
+                  <p className="text-[10px] text-red-400 leading-snug break-all">{item.errorMsg}</p>
+                )}
                 <input
                   type="text"
                   value={item.alt}
