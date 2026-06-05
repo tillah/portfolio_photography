@@ -369,6 +369,7 @@ export default function AdminPage() {
   const [selectMode, setSelectMode] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
   const [editing, setEditing] = useState<Photo | null>(null);
 
   useEffect(() => {
@@ -401,7 +402,12 @@ export default function AdminPage() {
   const handleDeleteSelected = async () => {
     if (!password || selected.size === 0) return;
     setDeleting(true);
-    let updatedPhotos: Photo[] = [];
+    setDeleteError(null);
+
+    // null = no successful delete yet; avoids wiping UI if every request fails
+    let updatedPhotos: Photo[] | null = null;
+    let failCount = 0;
+
     for (const id of Array.from(selected)) {
       const res = await fetch(`/api/admin/photos/${id}`, {
         method: "DELETE",
@@ -410,13 +416,23 @@ export default function AdminPage() {
       });
       if (res.ok) {
         const data = await res.json();
-        updatedPhotos = data.photos;
+        updatedPhotos = data.photos; // server returns the full updated list
+      } else {
+        failCount++;
       }
     }
-    // Use the photos list from the last DELETE response
-    if (updatedPhotos.length > 0 || selected.size > 0) {
+
+    // Only update UI if at least one delete succeeded
+    if (updatedPhotos !== null) {
       setPhotos(updatedPhotos);
     }
+
+    if (failCount > 0) {
+      setDeleteError(
+        `${failCount} photo${failCount > 1 ? "s" : ""} could not be deleted. Check that BLOB_READ_WRITE_TOKEN is set in your Vercel environment variables.`
+      );
+    }
+
     setSelected(new Set());
     setSelectMode(false);
     setDeleting(false);
@@ -506,6 +522,15 @@ export default function AdminPage() {
             </>
           )}
         </div>
+
+        {/* Delete error banner */}
+        {deleteError && (
+          <div className="mb-4 flex items-start gap-3 bg-red-900/20 border border-red-700/40 rounded-lg px-4 py-3">
+            <span className="text-red-400 text-sm shrink-0">⚠</span>
+            <p className="text-red-300 text-xs leading-relaxed flex-1">{deleteError}</p>
+            <button onClick={() => setDeleteError(null)} className="text-red-400/50 hover:text-red-300 text-sm shrink-0 transition-colors">✕</button>
+          </div>
+        )}
 
         {/* Grid */}
         <AnimatePresence mode="popLayout">
