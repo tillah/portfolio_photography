@@ -403,7 +403,7 @@ function BlobStatusBanner({
     return (
       <div className="mb-6 flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-emerald-400/60">
         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-        Blob connected · {status.count} photos in database
+        Database synced · {status.count} photos
       </div>
     );
   }
