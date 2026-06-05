@@ -6,10 +6,13 @@ const DATA_BLOB_PATH = "data/photos.json";
 // ── Read all photos ───────────────────────────────────────────────────────────
 export async function readPhotos(): Promise<Photo[]> {
   try {
-    // Try Blob store first
+    // Try Blob store first.
+    // Append a timestamp to the URL so CDN caches never serve a stale
+    // photos.json after an overwrite (allowOverwrite keeps the same URL).
     const { blobs } = await list({ prefix: DATA_BLOB_PATH });
     if (blobs.length > 0) {
-      const res = await fetch(blobs[0].url, { cache: "no-store" });
+      const freshUrl = `${blobs[0].url}?t=${Date.now()}`;
+      const res = await fetch(freshUrl, { cache: "no-store" });
       if (res.ok) return res.json();
     }
   } catch {
