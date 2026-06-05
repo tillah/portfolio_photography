@@ -63,38 +63,45 @@ export async function readPhotos(): Promise<Photo[]> {
 }
 
 // ── Write all photos ──────────────────────────────────────────────────────────
-// Creates a new versioned blob. Old versions are deleted after the new one
-// is confirmed, so only one blob ever exists under the prefix at a time.
+// Creates a new versioned blob each time so the URL is always fresh (never
+// CDN-cached). Old versions are NOT deleted here — Vercel Blob has a brief
+// indexing delay after put(), so deleting inside the same function risks
+// removing the blob we just wrote. Cleanup happens in syncFromLocal instead.
 export async function writePhotos(photos: Photo[]): Promise<void> {
   const json        = JSON.stringify(photos, null, 2);
   const versionPath = `${VERSION_PREFIX}${Date.now()}.json`;
-
-  // Write the new version first
   await put(versionPath, json, {
     access: "public",
     contentType: "application/json",
     addRandomSuffix: false,
   });
-
-  // Clean up all old versions (don't let cleanup failure roll back the write)
-  try {
-    const { blobs } = await list({ prefix: VERSION_PREFIX });
-    const old = blobs
-      .filter((b) => !b.pathname.endsWith(versionPath))
-      .map((b) => b.url);
-    if (old.length > 0) await del(old);
-  } catch { /* ignore cleanup errors */ }
 }
 
 // ── Sync from local seed file → Blob ─────────────────────────────────────────
 // Resets the Blob store to the content of the committed data/photos.json.
-// Use to: first-time init, recover bad state, or remove stale entries.
+// Also deletes all old versioned blobs, keeping only the fresh one just written.
 export async function syncFromLocal(): Promise<{ count: number }> {
   const fs   = await import("fs");
   const path = await import("path");
   const localPath = path.join(process.cwd(), "data", "photos.json");
   const photos: Photo[] = JSON.parse(fs.readFileSync(localPath, "utf-8"));
-  await writePhotos(photos);
+
+  // Write new version
+  const json        = JSON.stringify(photos, null, 2);
+  const versionPath = `${VERSION_PREFIX}${Date.now()}.json`;
+  const newBlob = await put(versionPath, json, {
+    access: "public",
+    contentType: "application/json",
+    addRandomSuffix: false,
+  });
+
+  // Delete all OLD versioned blobs (safe here because we have the new blob's URL)
+  try {
+    const { blobs } = await list({ prefix: VERSION_PREFIX });
+    const old = blobs.filter((b) => b.url !== newBlob.url).map((b) => b.url);
+    if (old.length > 0) await del(old);
+  } catch { /* ignore cleanup errors */ }
+
   return { count: photos.length };
 }
 
