@@ -12,14 +12,14 @@ export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!authorized(req))
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { id } = await params;
   try {
     const photos = await removePhoto(id);
     return NextResponse.json({ photos });
   } catch (err) {
-    // Without a try-catch, a blob/network error returns an HTML 500 page.
-    // The admin UI would then fail to parse JSON and silently crash.
     console.error("removePhoto error:", err);
     return NextResponse.json(
       { error: "Failed to delete photo", detail: String(err) },
@@ -32,13 +32,23 @@ export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!authorized(req))
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { id } = await params;
-  const { alt, category } = await req.json() as { alt?: string; category?: Category };
+  const body = await req.json() as {
+    alt?:       string;
+    category?:  Category;
+    featured?:  boolean;
+    published?: boolean;
+  };
+
   try {
     const photos = await updatePhoto(id, {
-      ...(alt !== undefined && { alt }),
-      ...(category !== undefined && { category }),
+      ...(body.alt       !== undefined && { alt:       body.alt }),
+      ...(body.category  !== undefined && { category:  body.category }),
+      ...(body.featured  !== undefined && { featured:  body.featured }),
+      ...(body.published !== undefined && { published: body.published }),
     });
     return NextResponse.json({ photos });
   } catch (err) {

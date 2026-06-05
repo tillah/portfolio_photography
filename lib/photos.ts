@@ -7,6 +7,9 @@ export interface Photo {
   category: Category;
   width: number;
   height: number;
+  publicId?: string;   // Cloudinary public_id — required for deletion
+  featured?: boolean;  // Shown in highlights / hero rotation
+  published?: boolean; // Hidden from public gallery when false (default: true)
 }
 
 export const heroImages = [

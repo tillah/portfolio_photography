@@ -284,9 +284,12 @@ function EditModal({
   onSaved: (photos: Photo[]) => void;
   onClose: () => void;
 }) {
-  const [alt, setAlt] = useState(photo.alt);
-  const [category, setCategory] = useState<Category>(photo.category);
-  const [saving, setSaving] = useState(false);
+  const [alt,       setAlt]       = useState(photo.alt);
+  const [category,  setCategory]  = useState<Category>(photo.category);
+  const [featured,  setFeatured]  = useState(photo.featured  ?? false);
+  const [published, setPublished] = useState(photo.published ?? true);
+  const [saving,    setSaving]    = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -296,14 +299,16 @@ function EditModal({
 
   const handleSave = async () => {
     setSaving(true);
+    setSaveError(null);
     const res = await fetch(`/api/admin/photos/${photo.id}`, {
       method: "PATCH",
       headers: { "x-admin-password": password, "Content-Type": "application/json" },
-      body: JSON.stringify({ alt, category }),
+      body: JSON.stringify({ alt, category, featured, published }),
     });
     const data = await res.json();
     setSaving(false);
     if (res.ok) { onSaved(data.photos); onClose(); }
+    else setSaveError(data.error ?? "Save failed");
   };
 
   return (
@@ -343,7 +348,27 @@ function EditModal({
               ))}
             </div>
           </div>
+
+          {/* Featured + Published toggles */}
+          <div className="flex gap-3 pt-1">
+            <button type="button" onClick={() => setFeatured((v) => !v)}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs tracking-wide rounded border transition-all ${
+                featured ? "border-amber-600/60 bg-amber-900/20 text-amber-300" : "border-white/10 text-white/30 hover:text-white"
+              }`}>
+              <span>{featured ? "★" : "☆"}</span> Featured
+            </button>
+            <button type="button" onClick={() => setPublished((v) => !v)}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 text-xs tracking-wide rounded border transition-all ${
+                published ? "border-emerald-700/50 bg-emerald-900/20 text-emerald-300" : "border-red-700/50 bg-red-900/15 text-red-400"
+              }`}>
+              <span>{published ? "✓" : "✕"}</span> {published ? "Published" : "Hidden"}
+            </button>
+          </div>
         </div>
+
+        {saveError && (
+          <p className="mt-3 text-red-400 text-xs tracking-wide">{saveError}</p>
+        )}
 
         <div className="flex gap-3 mt-6">
           <button onClick={onClose} className="flex-1 border border-white/10 text-white/40 hover:text-white py-2.5 text-xs tracking-[0.15em] uppercase rounded transition-all">
@@ -452,6 +477,7 @@ export default function AdminPage() {
   const [editing, setEditing] = useState<Photo | null>(null);
   const [blobStatus, setBlobStatus] = useState<BlobStatus>(null);
   const [syncing, setSyncing] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   const checkBlobStatus = useCallback(async (pw: string) => {
     try {
@@ -524,7 +550,7 @@ export default function AdminPage() {
   };
 
   const selectAll = () => setSelected(new Set(filtered.map((p) => p.id)));
-  const clearSelection = () => { setSelected(new Set()); setSelectMode(false); };
+  const clearSelection = () => { setSelected(new Set()); setSelectMode(false); setConfirmingDelete(false); };
 
   const handleDeleteSelected = async () => {
     if (!password || selected.size === 0) return;
@@ -556,13 +582,14 @@ export default function AdminPage() {
 
     if (failCount > 0) {
       setDeleteError(
-        `${failCount} photo${failCount > 1 ? "s" : ""} could not be deleted. Check that BLOB_READ_WRITE_TOKEN is set in your Vercel environment variables.`
+        `${failCount} photo${failCount > 1 ? "s" : ""} could not be deleted. Check the server logs for details.`
       );
     }
 
     setSelected(new Set());
     setSelectMode(false);
     setDeleting(false);
+    setConfirmingDelete(false);
   };
 
   if (!password) return <LoginScreen onLogin={handleLogin} />;
@@ -659,13 +686,34 @@ export default function AdminPage() {
                 className="text-[10px] tracking-[0.15em] uppercase border border-white/15 text-white/50 hover:text-white px-4 py-2 rounded transition-all">
                 Cancel
               </button>
-              <button
-                onClick={handleDeleteSelected}
-                disabled={selected.size === 0 || deleting}
-                className="text-[10px] tracking-[0.15em] uppercase bg-red-700 text-white hover:bg-red-600 px-5 py-2 rounded transition-colors disabled:opacity-30"
-              >
-                {deleting ? "Deleting…" : `Delete ${selected.size > 0 ? `${selected.size} ` : ""}selected`}
-              </button>
+              {!confirmingDelete ? (
+                <button
+                  onClick={() => selected.size > 0 && setConfirmingDelete(true)}
+                  disabled={selected.size === 0 || deleting}
+                  className="text-[10px] tracking-[0.15em] uppercase bg-red-700 text-white hover:bg-red-600 px-5 py-2 rounded transition-colors disabled:opacity-30"
+                >
+                  {`Delete ${selected.size > 0 ? `${selected.size} ` : ""}selected`}
+                </button>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-red-300 tracking-wide">
+                    Delete {selected.size} photo{selected.size !== 1 ? "s" : ""}?
+                  </span>
+                  <button
+                    onClick={handleDeleteSelected}
+                    disabled={deleting}
+                    className="text-[10px] tracking-[0.15em] uppercase bg-red-600 text-white hover:bg-red-500 px-4 py-2 rounded transition-colors disabled:opacity-40"
+                  >
+                    {deleting ? "Deleting…" : "Yes, delete"}
+                  </button>
+                  <button
+                    onClick={() => setConfirmingDelete(false)}
+                    className="text-[10px] tracking-[0.15em] uppercase border border-white/15 text-white/50 hover:text-white px-3 py-2 rounded transition-all"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
             </>
           )}
         </div>
@@ -726,6 +774,18 @@ export default function AdminPage() {
                         </div>
                       )}
                     </div>
+
+                    {/* Featured / hidden badges */}
+                    {(photo.featured || photo.published === false) && (
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {photo.featured && (
+                          <span className="text-[9px] bg-amber-500/80 text-white px-1.5 py-0.5 rounded">★</span>
+                        )}
+                        {photo.published === false && (
+                          <span className="text-[9px] bg-black/70 text-white/60 px-1.5 py-0.5 rounded">Hidden</span>
+                        )}
+                      </div>
+                    )}
 
                     {/* Meta */}
                     <div className="p-2.5">
