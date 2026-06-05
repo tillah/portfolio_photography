@@ -15,7 +15,7 @@ const categories = [
     title: "Proposals",
     description:
       "The moment you say yes deserves to be remembered forever. Discreet, heartfelt, and beautifully captured.",
-    imageSrc: "/uploads/upload_1780197552637.jpg",
+    imageSrc: "/uploads/upload_1780197552303.jpg",
     imageAlt: "Proposal moment",
     href: "/portfolio?category=proposals",
   },
@@ -23,7 +23,7 @@ const categories = [
     title: "Graduations",
     description:
       "Years of dedication, one extraordinary day. Celebrate the achievement with images that honour the journey.",
-    imageSrc: "/uploads/upload_1780197370163.jpg",
+    imageSrc: "/uploads/upload_1780197370590.jpg",
     imageAlt: "Graduation celebration",
     href: "/portfolio?category=graduations",
   },
@@ -31,7 +31,7 @@ const categories = [
     title: "Events",
     description:
       "From intimate gatherings to landmark celebrations — your story, beautifully told.",
-    imageSrc: "/uploads/upload_1780196051135.jpg",
+    imageSrc: "/uploads/upload_1780197506690.jpg",
     imageAlt: "Event celebration",
     href: "/portfolio?category=events",
   },
@@ -39,7 +39,7 @@ const categories = [
     title: "Studio",
     description:
       "Timeless portraits in a controlled, creative environment. Just you, the light, and the lens.",
-    imageSrc: "/uploads/upload_1780197390357.jpg",
+    imageSrc: "/uploads/upload_1780197390339.jpg",
     imageAlt: "Studio portrait session",
     href: "/portfolio?category=studio",
   },
@@ -101,7 +101,7 @@ export default function HomePage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('/uploads/upload_1780197552263.jpg')",
+                "url('/uploads/upload_1780197552287.jpg')",
             }}
           />
           <div className="absolute inset-0 bg-black/55" />
