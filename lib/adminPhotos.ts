@@ -77,31 +77,53 @@ export async function writePhotos(photos: Photo[]): Promise<void> {
   });
 }
 
+// ── Initialize Blob if empty ──────────────────────────────────────────────────
+// Seeds the Blob store from data/photos.json ONLY when no versioned blob exists.
+// Safe to call on every admin login — won't overwrite existing data.
+export async function initializeIfEmpty(): Promise<{ seeded: boolean; count: number }> {
+  // Check if versioned blobs already exist
+  const { blobs } = await list({ prefix: VERSION_PREFIX });
+  if (blobs.length > 0) {
+    // Already initialised — just return current count
+    const latest = blobs.sort(
+      (a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime()
+    )[0];
+    const res = await fetch(latest.url, { cache: "no-store" });
+    const data = res.ok ? await res.json() : [];
+    return { seeded: false, count: Array.isArray(data) ? data.length : 0 };
+  }
+
+  // Empty — seed from local file
+  const fs   = await import("fs");
+  const path = await import("path");
+  const localPath = path.join(process.cwd(), "data", "photos.json");
+  const photos: Photo[] = JSON.parse(fs.readFileSync(localPath, "utf-8"));
+  await writePhotos(photos);
+  return { seeded: true, count: photos.length };
+}
+
+// ── Clean up old blob versions ────────────────────────────────────────────────
+// Removes all versioned blobs except the latest. Safe to call any time.
+export async function cleanupOldVersions(): Promise<{ deleted: number }> {
+  const { blobs } = await list({ prefix: VERSION_PREFIX });
+  if (blobs.length <= 1) return { deleted: 0 };
+  const sorted = blobs.sort(
+    (a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime()
+  );
+  const old = sorted.slice(1).map((b) => b.url);
+  await del(old);
+  return { deleted: old.length };
+}
+
 // ── Sync from local seed file → Blob ─────────────────────────────────────────
-// Resets the Blob store to the content of the committed data/photos.json.
-// Also deletes all old versioned blobs, keeping only the fresh one just written.
+// Hard reset: overwrites Blob with the committed data/photos.json.
+// Use only to recover from corruption — this REPLACES all current photos.
 export async function syncFromLocal(): Promise<{ count: number }> {
   const fs   = await import("fs");
   const path = await import("path");
   const localPath = path.join(process.cwd(), "data", "photos.json");
   const photos: Photo[] = JSON.parse(fs.readFileSync(localPath, "utf-8"));
-
-  // Write new version
-  const json        = JSON.stringify(photos, null, 2);
-  const versionPath = `${VERSION_PREFIX}${Date.now()}.json`;
-  const newBlob = await put(versionPath, json, {
-    access: "public",
-    contentType: "application/json",
-    addRandomSuffix: false,
-  });
-
-  // Delete all OLD versioned blobs (safe here because we have the new blob's URL)
-  try {
-    const { blobs } = await list({ prefix: VERSION_PREFIX });
-    const old = blobs.filter((b) => b.url !== newBlob.url).map((b) => b.url);
-    if (old.length > 0) await del(old);
-  } catch { /* ignore cleanup errors */ }
-
+  await writePhotos(photos);
   return { count: photos.length };
 }
 

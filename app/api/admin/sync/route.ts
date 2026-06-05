@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { syncFromLocal, getBlobStatus } from "@/lib/adminPhotos";
+import { initializeIfEmpty, cleanupOldVersions, getBlobStatus } from "@/lib/adminPhotos";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "admin123";
 
@@ -14,20 +14,16 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(status);
 }
 
-// POST — force-sync local data/photos.json → private Blob
-// Resets the Blob store to the committed seed file.
-// Use this to: initialize Blob for the first time, recover from corruption,
-// or remove stale entries (like old categories or deleted image references).
+// POST — initialize if empty + clean up old blob versions
+// Safe to call at any time: does NOT overwrite existing photo data.
 export async function POST(req: NextRequest) {
   if (!authorized(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
-    const result = await syncFromLocal();
-    return NextResponse.json({ success: true, ...result });
+    const init    = await initializeIfEmpty();
+    const cleanup = await cleanupOldVersions();
+    return NextResponse.json({ success: true, ...init, cleaned: cleanup.deleted });
   } catch (err) {
     console.error("Sync error:", err);
-    return NextResponse.json(
-      { error: "Sync failed", detail: String(err) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Sync failed", detail: String(err) }, { status: 500 });
   }
 }

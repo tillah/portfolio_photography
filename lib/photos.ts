@@ -11,22 +11,22 @@ export interface Photo {
 
 export const heroImages = [
   {
-    src: "/uploads/upload_1780197552584.jpg",
+    src: "/uploads/upload_1780197552661.jpg",
     alt: "Proposal moment",
     label: "Proposals",
   },
   {
-    src: "/uploads/upload_1780197370202.jpg",
+    src: "/uploads/upload_1780197370947.jpg",
     alt: "Graduation celebration",
     label: "Graduations",
   },
   {
-    src: "/uploads/upload_1780195798270.jpg",
+    src: "/uploads/upload_1780197506800.jpg",
     alt: "Event celebration",
     label: "Celebrations",
   },
   {
-    src: "/uploads/upload_1780197390349.jpg",
+    src: "/uploads/upload_1780197390370.jpg",
     alt: "Studio portrait session",
     label: "Studio",
   },

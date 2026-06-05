@@ -418,9 +418,9 @@ function BlobStatusBanner({
             Database not initialised
           </p>
           <p className="text-amber-300/60 text-xs leading-relaxed mb-3">
-            The Blob store hasn&apos;t been set up yet. Changes made in the admin
-            won&apos;t persist to the website until you sync. This also clears any
-            stale data (old categories like &ldquo;birthday&rdquo;, missing images, etc).
+            The database hasn&apos;t been set up yet. Click below to initialise it —
+            this seeds it from the backup file and won&apos;t affect photos you&apos;ve
+            already uploaded.
           </p>
           {error && (
             <p className="text-red-400 text-xs mb-2">Error: {error}</p>
@@ -643,10 +643,10 @@ export default function AdminPage() {
               <button
                 onClick={handleManualSync}
                 disabled={syncing}
-                title="Reset database from committed backup"
-                className="text-[10px] tracking-[0.15em] uppercase border border-white/15 text-white/40 hover:text-amber-300 hover:border-amber-700/50 px-4 py-2 rounded transition-all disabled:opacity-30"
+                title="Clean up old blob versions (safe — does not change your photos)"
+                className="text-[10px] tracking-[0.15em] uppercase border border-white/15 text-white/40 hover:text-white hover:border-white/30 px-4 py-2 rounded transition-all disabled:opacity-30"
               >
-                {syncing ? "Syncing…" : "↺ Sync DB"}
+                {syncing ? "Cleaning…" : "↺ Clean up"}
               </button>
             </>
           ) : (
