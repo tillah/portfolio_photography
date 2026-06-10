@@ -49,9 +49,6 @@ function LoginScreen({ onLogin }: { onLogin: (pw: string) => void }) {
             {loading ? "Checking…" : "Enter"}
           </button>
         </form>
-        <p className="mt-6 text-center text-white/20 text-[10px] tracking-widest uppercase">
-          Default: <span className="text-white/40">admin123</span> · set <code className="text-white/30">ADMIN_PASSWORD</code> env var to change
-        </p>
       </motion.div>
     </div>
   );
